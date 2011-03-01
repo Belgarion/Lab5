@@ -1,3 +1,6 @@
+package Lab5.CarWash.State;
+
+import Lab5.Simulator.Event.Event;
 
 public class Info {
 	public int numRejectedCars;

@@ -1,3 +1,4 @@
+package Lab5.Simulator.State;
 
 public class SimState {
 

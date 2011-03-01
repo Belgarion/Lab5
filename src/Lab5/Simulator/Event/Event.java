@@ -1,3 +1,6 @@
+package Lab5.Simulator.Event;
+
+import Lab5.Simulator.State.SimState;
 
 public abstract class Event {
 	private int time;

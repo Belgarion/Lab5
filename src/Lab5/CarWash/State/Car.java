@@ -1,3 +1,4 @@
+package Lab5.CarWash.State;
 
 public class Car {
 	private int id;

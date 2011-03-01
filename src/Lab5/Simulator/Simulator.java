@@ -1,3 +1,8 @@
+package Lab5.Simulator;
+
+import Lab5.Simulator.Event.EventQueue;
+import Lab5.Simulator.State.SimState;
+import Lab5.Simulator.View.SimView;
 
 public class Simulator {
 	private SimState state;
