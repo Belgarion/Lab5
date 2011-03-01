@@ -1,0 +1,41 @@
+<project>
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+
+	<path id="run-classpath">
+		<fileset dir="build/jar">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="compile">
+		<mkdir dir="build/classes" />
+		<javac srcdir="src" destdir="build/classes">
+		</javac>
+	</target>
+
+
+	<target name="jar" depends="compile">
+		<mkdir dir="build/jar" />
+		<jar destfile="build/jar/lab5.jar" basedir="build/classes">
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+		<java classpathref="run-classpath" classname="Lab5.MainSim" fork="true">
+		</java>
+	</target>
+
+	<target name="main" depends="clean, run" />
+
+	<target name="javadoc" depends="compile">
+		<mkdir dir="build/docs/" />
+		<javadoc sourcepath="src" destdir="build/docs/" packagenames="*">
+			<fileset dir="src">
+				<include name="*.java" />
+			</fileset>
+			<classpath refid="files-classpath" />
+		</javadoc>
+	</target>
+</project>
