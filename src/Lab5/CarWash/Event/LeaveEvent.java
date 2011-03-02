@@ -8,13 +8,7 @@ public class LeaveEvent extends CarWashEvent {
 	public void updateState(SimState state, EventQueue eventQueue) {
 		
 		//Update info
-		Info info = Info state.getInfo();
-		int qTime = car.getQueueingTime(this);
-		info.totalQueueingTime += qTime;
-		
-		
-		//Remove car from system
-		
+		((CarWashState) state).updateStatus(this);
 		
 	}
 }
