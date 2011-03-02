@@ -6,20 +6,22 @@ public class FIFO {
 	private Vector<Object> v;
 
 	public void insert(Object o) {
+		v.add(o);
 	}
 
 	public Object first() {
-		return 0;
+		return v.firstElement();
 	}
 
 	public int size() {
-		return 0;
+		return v.size();
 	}
 
 	public void removeFirst() {
+		v.remove(0);
 	}
 
 	public boolean isEmpty() {
-		return true;
+		return v.isEmpty();
 	}
 }
