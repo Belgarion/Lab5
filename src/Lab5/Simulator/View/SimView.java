@@ -1,7 +1,10 @@
 package Lab5.Simulator.View;
 
-public class SimView {
+import java.util.Observer;
+import java.util.Observable;
 
-	public void update() {
+public class SimView implements Observer {
+
+	public void update(Observable o, Object arg) {
 	}
 }
