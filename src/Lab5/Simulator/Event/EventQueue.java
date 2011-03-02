@@ -1,8 +1,10 @@
 package Lab5.Simulator.Event;
 
-public class EventQueue extends SortedSequence {
+public class EventQueue extends SortedSequence<Event> {
 
-	public Object get() {
-		return 0;
+	public Event get() {
+		Event event = this.first();
+		this.removeFirst();
+		return event;
 	}
 }
