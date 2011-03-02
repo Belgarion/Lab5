@@ -1,6 +1,6 @@
 package Lab5;
 
 public class MainSim {
-	public void Main(String[] args) {
+	public static void main(String[] args) {
 	}
 }
