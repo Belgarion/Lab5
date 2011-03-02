@@ -2,24 +2,26 @@ package Lab5.CarWash.State;
 
 import java.util.Vector;
 
-public class FIFO {
-	private Vector<Object> v;
+public class FIFO<T> {
+	private Vector<T> v;
 
-	public void insert(Object o) {
+	public void insert(T o) {
+		v.add(o);
 	}
 
-	public Object first() {
-		return 0;
+	public T first() {
+		return v.elementAt(0);
 	}
 
 	public int size() {
-		return 0;
+		return v.size();
 	}
 
 	public void removeFirst() {
+		v.removeElementAt(0);
 	}
 
 	public boolean isEmpty() {
-		return true;
+		return v.size() == 0;
 	}
 }
