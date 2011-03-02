@@ -18,4 +18,5 @@ public class Info {
 	public Event lastEvent;
 	public int emptyFast;
 	public int emptySlow;
+	public int carsInQueue;
 }

@@ -4,7 +4,9 @@ import java.util.Vector;
 
 import random.ExponentialRandomStream;
 
-public class CarWashState {
+import Lab5.Simulator.State.SimState;
+
+public class CarWashState extends SimState {
 	private Vector<CarWash> fastWashes;
 	private Vector<CarWash> slowWashes;
 	private ExponentialRandomStream randCarStream;
