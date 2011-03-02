@@ -18,10 +18,10 @@ public class FIFO<T> {
 	}
 
 	public void removeFirst() {
-		v.removeElementAt(0);
+		v.remove(0);
 	}
 
 	public boolean isEmpty() {
-		return v.size() == 0;
+		return v.isEmpty();
 	}
 }
