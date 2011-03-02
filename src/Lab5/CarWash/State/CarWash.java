@@ -7,4 +7,16 @@ public class CarWash {
 	private boolean hasCar;
 	private int currentCarId;
 	private int idleTime;
+	
+	public boolean isEmpty(){
+		return !this.hasCar;
+	}
+	
+	public int getCurrentCarId(){
+		return this.currentCarId;
+	}
+	
+	public void setHasCar(boolean hasCarNow){
+		this.hasCar = hasCarNow;
+	}
 }

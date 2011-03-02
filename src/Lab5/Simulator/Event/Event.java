@@ -4,7 +4,7 @@ import Lab5.Simulator.State.SimState;
 import java.lang.Comparable;
 
 public abstract class Event implements Comparable<Event>{
-	private int time;
+	protected int time;
 
 	public int getTime() {
 		return time;
