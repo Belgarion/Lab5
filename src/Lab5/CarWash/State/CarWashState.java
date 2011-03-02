@@ -10,4 +10,7 @@ public class CarWashState {
 	private ExponentialRandomStream randCarStream;
 	private FIFO queue;
 	private Info info;
+	public Info getInfo(){
+		return info;
+	}
 }
