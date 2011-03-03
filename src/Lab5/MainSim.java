@@ -8,10 +8,10 @@ import Lab5.CarWash.Event.StopEvent;
 
 public class MainSim {
 	public static void main(String[] args) {
-		if (args.length < 9) {
+		if (args.length < 10) {
 			System.out.println("Usage: java -jar lab5.jar <fast machines> <slow machines> <fast distribution min>"
 					+ " <fast distribution max> <slow distribution min> <slow distribution max> <lambda> <seed>"
-					+ " <max queue size>");
+					+ " <max queue size> <stop time>");
 			return;
 		}
 
@@ -25,6 +25,8 @@ public class MainSim {
 		double lambda = Double.parseDouble(args[6]);
 		int seed = Integer.parseInt(args[7]);
 		int maxQueueSize = Integer.parseInt(args[8]);
+		double stopTime = Double.parseDouble(args[9]);
+		// ---
 
 		CarWashState state = new CarWashState();
 		CarWashView view = new CarWashView(state);
@@ -36,7 +38,7 @@ public class MainSim {
 		state.setMaxQueueSize(maxQueueSize);
 
 		queue.insert(new StartEvent());
-		queue.insert(new StopEvent(15.0));
+		queue.insert(new StopEvent(stopTime));
 
 		Simulator sim = new Simulator(state, view, queue);
 		sim.run();

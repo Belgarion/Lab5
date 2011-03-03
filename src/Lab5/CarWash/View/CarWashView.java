@@ -36,9 +36,9 @@ public class CarWashView extends SimView {
 			System.out.println("Max Queue Size: " + i.maxQueueSize);
 			System.out.println("----------------------------------------");
 			System.out.println("      Time      Event    Id    Fast    Slow    IdleTime  QueueTime  QueueSize   Rejected");
-			System.out.format("%8.2f      Start\n", i.lastEvent.getTime());
+			System.out.format("%10.2f      Start\n", i.lastEvent.getTime());
 		} else if (i.lastEvent instanceof StopEvent) {
-			System.out.format("%8.2f      Stop\n", i.lastEvent.getTime());
+			System.out.format("%10.2f      Stop\n", i.lastEvent.getTime());
 			System.out.println("----------------------------------------");
 			System.out.println("Total idle machine time: " + i.totalIdleTime);
 			System.out.println("Total queueing time:     " + i.totalQueueingTime);
@@ -46,7 +46,7 @@ public class CarWashView extends SimView {
 			System.out.println("Rejected cars:           " + i.numRejectedCars);
 		} else {
 			Event e = i.lastEvent;
-			System.out.format("%8.2f %s %s %s %s %s %s %s\n",
+			System.out.format("%10.2f %s %s %s %s %s %s %s\n",
 						e.getTime(), e.getClass().getName(), "id", i.emptyFast, i.emptySlow,
 						i.totalIdleTime, i.totalQueueingTime, i.carsInQueue, i.numRejectedCars);
 		}
