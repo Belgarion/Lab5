@@ -3,7 +3,7 @@ import java.util.Vector;
 
 public class SortedSequence<E extends Comparable<E>> {
 	Vector<E> seq = new Vector<E>();
-	
+
 	public void insert(E o) {
 		if(seq.size()==0){
 			seq.add(o);
@@ -17,10 +17,15 @@ public class SortedSequence<E extends Comparable<E>> {
 	}
 
 	public void removeFirst() {
-		seq.removeElementAt(0);
+		if (seq.size() > 0) {
+			seq.removeElementAt(0);
+		}
 	}
 
 	public E first() {
-		return seq.elementAt(0);
+		if (seq.size() > 0) {
+			return seq.elementAt(0);
+		}
+		return null;
 	}
 }

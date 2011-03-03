@@ -1,6 +1,8 @@
 package Lab5.Simulator.State;
 
-public class SimState {
+import java.util.Observable;
+
+public class SimState extends Observable {
 
 	public void start() {
 	}

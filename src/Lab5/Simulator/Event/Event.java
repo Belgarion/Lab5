@@ -4,9 +4,16 @@ import Lab5.Simulator.State.SimState;
 import java.lang.Comparable;
 
 public abstract class Event implements Comparable<Event>{
-	protected int time;
+	protected double time;
 
-	public int getTime() {
+	public Event() {
+	}
+
+	public Event(double time) {
+		this.time = time;
+	}
+
+	public double getTime() {
 		return time;
 	}
 
@@ -14,10 +21,10 @@ public abstract class Event implements Comparable<Event>{
 
 	public int compareTo(Event event) {
 		if(this.time < event.time) {
-			return -1; 
+			return -1;
 		}
 		if(this.time > event.time) {
-			return 1; 
+			return 1;
 		}
 		return 0;
 	}

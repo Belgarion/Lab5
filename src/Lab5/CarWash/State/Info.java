@@ -11,9 +11,11 @@ public class Info {
 	public int numSlowWashes;
 	public int maxQueueSize;
 	public int meanQueueingTime;
-	public int fastDistribution;
-	public int slowDistribution;
-	public int lambda;
+	public double fastDistributionMin;
+	public double fastDistributionMax;
+	public double slowDistributionMin;
+	public double slowDistributionMax;
+	public double lambda;
 	public int seed;
 	public Event lastEvent;
 	public int emptyFast;
