@@ -12,6 +12,11 @@ public class CarWash {
 		return !this.hasCar;
 	}
 	
+	//Maybe better to create sub-classes?
+	public boolean isFast(){
+		
+	}
+	
 	public int getCurrentCarId(){
 		return this.currentCarId;
 	}
