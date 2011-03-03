@@ -13,6 +13,18 @@ public class CarWashState extends SimState {
 	private FIFO queue;
 	private Info info;
 
+	CarWashState(){
+		//Create slow and fast washes
+		for(int f = 0; f < info.numFastWashes; f++){
+			//TODO Parameters for CarWash
+			fastWashes.add(new CarWash("Fast"));
+		}
+		for(int s = 0; s < info.numSlowWashes; s++){
+			//TODO Parameters for CarWash
+			slowWashes.add(new CarWash("Slow"));
+		}
+	}
+	
 	public Info getInfo() {
 		return info;
 	}
