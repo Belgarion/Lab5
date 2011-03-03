@@ -14,7 +14,7 @@ public class CarWashState extends SimState {
 	private Info info;
 
 	CarWashState(){
-		//Create slow and fast washes, BOHO (test)
+		//Create slow and fast washes
 		for(int f = 0; f < info.numFastWashes; f++){
 			//TODO Parameters for CarWash
 			fastWashes.add(new CarWash("Fast"));
