@@ -7,17 +7,22 @@ import Lab5.Simulator.Event.EventQueue;
 import Lab5.CarWash.State.*;
 
 public class ArriveEvent extends Event {
+	public ArriveEvent(double time){
+		this.time=time;
+	}
 	public void updateState(SimState state, EventQueue eventQueue) {
-		Info info = ((CarWashState)state).getInfo();
-		if (info.emptyFast > 0) {
-			//add car to fastWash
-		} else if (info.emptySlow > 0) {
-			//add car to SlowWash
+		CarWashState s=(CarWashState)state;
+		Info info = s.getInfo();
+		Car car = s.carFactory.createCar();
+		s.getInfo().currentTime=this.time;
+		if (info.emptyFast > 0||info.emptySlow > 0) {
+			//add car to fastWash or slowWash
+			eventQueue.insert(new LeaveEvent(car, s.addToMachine(car)));
 		} else if (info.carsInQueue < info.maxQueueSize) {
 			//add to car queue
-		} else {
-			//Discard car
-		}
-		eventQueue.insert(new ArriveEvent());
+			s.addToQueue(car);
+		} 
+		//if none of the if-statements is fulfilled the car is simply not used
+		eventQueue.insert(new ArriveEvent(s.nextAriveTime()));
 	}
 }

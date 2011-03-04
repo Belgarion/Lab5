@@ -11,8 +11,10 @@ public class CarWashState extends SimState {
 	private Vector<CarWash> fastWashes;
 	private Vector<CarWash> slowWashes;
 	private ExponentialRandomStream randCarStream;
-	private FIFO queue;
+	private FIFO<Car> queue;
 	private Info info;
+	public CarFactory carFactory;
+	private Vector<CarWash> emptyMachines;//contains a list of al empty machines fast should be placed first in the vector and slow in the end
 
 	public CarWashState(){
 		info = new Info();
@@ -22,12 +24,13 @@ public class CarWashState extends SimState {
 		//Create slow and fast washes
 		for(int f = 0; f < info.numFastWashes; f++){
 			//TODO Parameters for CarWash
-			fastWashes.add(new CarWash("Fast"));
+			fastWashes.add(new CarWash("Fast", this));
 		}
 		for(int s = 0; s < info.numSlowWashes; s++){
 			//TODO Parameters for CarWash
-			slowWashes.add(new CarWash("Slow"));
+			slowWashes.add(new CarWash("Slow", this));
 		}
+		
 	}
 
 	public Info getInfo() {
@@ -98,4 +101,45 @@ public class CarWashState extends SimState {
 	public void setMaxQueueSize(int maxQueueSize) {
 		info.maxQueueSize = maxQueueSize;
 	}
+	//***************************************************
+	//Added by Andreas Nielsen 
+	public double addToMachine(Car car){//Returns the time it should come out of the machine
+		CarWash wash = emptyMachines.remove(0);//removes the first element and adds the car to it
+		wash.addCar(car);
+		if(wash.getType()=="fast"){
+			info.emptyFast--;
+		}else{
+			info.emptySlow--;
+		}
+		return wash.TimeInWash();
+	}
+	public void removeFromMachines(Car car){
+		for(int i=0; i<fastWashes.size(); i++){
+			if(fastWashes.elementAt(i).hasCar(car)){
+				emptyMachines.add(fastWashes.elementAt(i));
+				fastWashes.remove(i);
+			}
+		}
+		for(int i=0; i<slowWashes.size(); i++){
+			if(slowWashes.elementAt(i).hasCar(car)){
+				emptyMachines.add(slowWashes.elementAt(i));
+				slowWashes.remove(i);
+			}
+		}
+	}
+
+	public void addToQueue(Car car){
+		queue.insert(car);
+		info.carsInQueue++;
+	}
+	public Car removeFromQueue(){
+		Car car = queue.first();
+		queue.removeFirst();
+		info.carsInQueue--;
+		return car;
+	}
+	public double nextAriveTime(){
+		return randCarStream.next();
+	}
+	//***************************************************
 }

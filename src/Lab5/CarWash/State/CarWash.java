@@ -6,9 +6,26 @@ public class CarWash {
 	private UniformRandomStream randStream;
 	private boolean hasCar;
 	private int currentCarId;
-	private int idleTime;
+	private double idleTime;
+	private Car currentCar;
+	private String type;
+	private double lastUsed=0;
+	private CarWashState state;
 
-	public CarWash(String type) {
+	public CarWash(String type, CarWashState state) {
+		this.type = type;
+		this.state=state;
+		Info info =state.getInfo();
+		if(type=="slow"){
+			randStream = new UniformRandomStream(info.slowDistributionMax,info.slowDistributionMin,info.seed);
+		}else if(type == "fast"){
+			randStream = new UniformRandomStream(info.fastDistributionMax,info.fastDistributionMin,info.seed);
+		}
+		
+	}
+	
+	public String getType(){
+		return type;
 	}
 
 	public boolean isEmpty(){
@@ -17,14 +34,38 @@ public class CarWash {
 
 	//Maybe better to create sub-classes?
 	public boolean isFast(){
-		return true;
+		if(type=="fast"){
+			return true;
+		}
+		return false;
 	}
 
 	public int getCurrentCarId(){
 		return this.currentCarId;
 	}
+	
+	public boolean hasCar(Car car){
+		if(this.currentCar==car){
+			return true;
+		}
+		return false;
+	}
+	
+	public void addCar(Car car){
+		this.currentCar = car;
+		this.setHasCar(true);
+		idleTime=idleTime+(state.getInfo().currentTime-lastUsed);
+	}
+	public void removeCar(){
+		this.currentCar = null;
+		this.setHasCar(false);
+		lastUsed=state.getInfo().currentTime;
+	}
 
 	public void setHasCar(boolean hasCarNow){
 		this.hasCar = hasCarNow;
+	}
+	public double TimeInWash(){
+		return randStream.next();
 	}
 }
