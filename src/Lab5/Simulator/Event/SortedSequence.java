@@ -5,11 +5,11 @@ public class SortedSequence<E extends Comparable<E>> {
 	Vector<E> seq = new Vector<E>();
 
 	public void insert(E o) {
-		if(seq.size()==0){
+		if (seq.size() == 0) {
 			seq.add(o);
-		}else{
-			int i=seq.size();
-			while(o.compareTo(seq.elementAt(i-1))<0){
+		} else {
+			int i = seq.size();
+			while (i > 0 && o.compareTo(seq.elementAt(i-1)) < 0) {
 				i--;
 			}
 			seq.add((i), o);

@@ -14,23 +14,17 @@ public class CarWashState extends SimState {
 	private FIFO<Car> queue;
 	private Info info;
 	public CarFactory carFactory;
-	private Vector<CarWash> emptyMachines;//contains a list of al empty machines fast should be placed first in the vector and slow in the end
+	private Vector<CarWash> emptyMachines; //contains a list of all empty machines fast should be placed first in the vector and slow in the end
 
 	public CarWashState(){
 		info = new Info();
 		fastWashes = new Vector<CarWash>();
 		slowWashes = new Vector<CarWash>();
+		carFactory = new CarFactory();
+		queue = new FIFO<Car>();
+		emptyMachines = new Vector<CarWash>();
 
-		//Create slow and fast washes
-		for(int f = 0; f < info.numFastWashes; f++){
-			//TODO Parameters for CarWash
-			fastWashes.add(new CarWash("Fast", this));
-		}
-		for(int s = 0; s < info.numSlowWashes; s++){
-			//TODO Parameters for CarWash
-			slowWashes.add(new CarWash("Slow", this));
-		}
-		
+		start();
 	}
 
 	public Info getInfo() {
@@ -48,7 +42,7 @@ public class CarWashState extends SimState {
 
 	public void updateStatus(CarWashEvent e) {
 
-		// Om denna ska anvŠndas Šven i ArriveEvent borde man kolla vilket event
+		// Om denna ska anvÃ¤ndas Ã¤ven i ArriveEvent borde man kolla vilket event
 		// man behandlar.
 
 		// Update number of empty machines
@@ -77,12 +71,31 @@ public class CarWashState extends SimState {
 		}
 
 		setLastEvent(e);
-
+		doNotify();
 	}
 
 	public void setNumMachines(int fast, int slow) {
-		info.numFastWashes = fast;
-		info.numSlowWashes = slow;
+		info.numFastWashes = info.emptyFast = fast;
+		info.numSlowWashes = info.emptySlow = slow;
+
+		fastWashes.clear();
+		slowWashes.clear();
+		emptyMachines.clear();
+
+		//Create slow and fast washes
+		for(int f = 0; f < info.numFastWashes; f++){
+			//TODO Parameters for CarWash
+			CarWash cw = new CarWash("Fast", this);
+			fastWashes.add(cw);
+			emptyMachines.add(cw);
+		}
+		for(int s = 0; s < info.numSlowWashes; s++){
+			//TODO Parameters for CarWash
+			CarWash cw = new CarWash("Slow", this);
+			slowWashes.add(cw);
+			emptyMachines.add(cw);
+		}
+
 	}
 
 	public void setDistribution(double fastMin, double fastMax, double slowMin,
@@ -92,6 +105,8 @@ public class CarWashState extends SimState {
 		info.slowDistributionMin = slowMin;
 		info.slowDistributionMax = slowMax;
 		info.lambda = lambda;
+
+		randCarStream = new ExponentialRandomStream(info.lambda, info.seed);
 	}
 
 	public void setSeed(int seed) {
@@ -102,44 +117,49 @@ public class CarWashState extends SimState {
 		info.maxQueueSize = maxQueueSize;
 	}
 	//***************************************************
-	//Added by Andreas Nielsen 
-	public double addToMachine(Car car){//Returns the time it should come out of the machine
-		CarWash wash = emptyMachines.remove(0);//removes the first element and adds the car to it
+	//Added by Andreas Nielsen
+	public double addToMachine(Car car) { //Returns the time it should come out of the machine
+		CarWash wash = emptyMachines.remove(0); //removes the first element and adds the car to it
 		wash.addCar(car);
-		if(wash.getType()=="fast"){
+		if (wash.getType() == "Fast") {
 			info.emptyFast--;
-		}else{
+		} else {
 			info.emptySlow--;
 		}
-		return wash.TimeInWash();
+		return car.getArriveTime() + wash.timeInWash();
 	}
-	public void removeFromMachines(Car car){
-		for(int i=0; i<fastWashes.size(); i++){
-			if(fastWashes.elementAt(i).hasCar(car)){
+
+	public void removeFromMachines(Car car) {
+		for (int i=0; i<fastWashes.size(); i++) {
+			if (fastWashes.elementAt(i).hasCar(car)) {
 				emptyMachines.add(fastWashes.elementAt(i));
 				fastWashes.remove(i);
 			}
 		}
-		for(int i=0; i<slowWashes.size(); i++){
-			if(slowWashes.elementAt(i).hasCar(car)){
+		for (int i=0; i<slowWashes.size(); i++) {
+			if (slowWashes.elementAt(i).hasCar(car)) {
 				emptyMachines.add(slowWashes.elementAt(i));
 				slowWashes.remove(i);
 			}
 		}
 	}
 
-	public void addToQueue(Car car){
+	public void addToQueue(Car car) {
 		queue.insert(car);
 		info.carsInQueue++;
 	}
-	public Car removeFromQueue(){
+
+	public Car removeFromQueue() {
 		Car car = queue.first();
 		queue.removeFirst();
 		info.carsInQueue--;
 		return car;
 	}
-	public double nextAriveTime(){
-		return randCarStream.next();
+
+	public double nextArriveTime() {
+		double t = randCarStream.next();
+		info.lastTime += t;
+		return info.lastTime;
 	}
 	//***************************************************
 }

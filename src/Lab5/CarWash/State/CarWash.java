@@ -14,16 +14,18 @@ public class CarWash {
 
 	public CarWash(String type, CarWashState state) {
 		this.type = type;
-		this.state=state;
-		Info info =state.getInfo();
-		if(type=="slow"){
-			randStream = new UniformRandomStream(info.slowDistributionMax,info.slowDistributionMin,info.seed);
-		}else if(type == "fast"){
-			randStream = new UniformRandomStream(info.fastDistributionMax,info.fastDistributionMin,info.seed);
+		this.state = state;
+		Info info = state.getInfo();
+		if (type == "Slow") {
+			randStream = new UniformRandomStream(info.slowDistributionMin,
+					info.slowDistributionMax, info.seed);
+		} else if (type == "Fast") {
+			randStream = new UniformRandomStream(info.fastDistributionMin,
+					info.fastDistributionMax, info.seed);
 		}
-		
+
 	}
-	
+
 	public String getType(){
 		return type;
 	}
@@ -43,19 +45,20 @@ public class CarWash {
 	public int getCurrentCarId(){
 		return this.currentCarId;
 	}
-	
+
 	public boolean hasCar(Car car){
 		if(this.currentCar==car){
 			return true;
 		}
 		return false;
 	}
-	
+
 	public void addCar(Car car){
 		this.currentCar = car;
 		this.setHasCar(true);
 		idleTime=idleTime+(state.getInfo().currentTime-lastUsed);
 	}
+
 	public void removeCar(){
 		this.currentCar = null;
 		this.setHasCar(false);
@@ -65,7 +68,8 @@ public class CarWash {
 	public void setHasCar(boolean hasCarNow){
 		this.hasCar = hasCarNow;
 	}
-	public double TimeInWash(){
+
+	public double timeInWash(){
 		return randStream.next();
 	}
 }

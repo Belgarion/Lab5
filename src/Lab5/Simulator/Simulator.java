@@ -18,7 +18,7 @@ public class Simulator {
 
 	public void run() {
 		Event e;
-		while ((e = eventQueue.get()) != null) {
+		while (state.isRunning() && (e = eventQueue.get()) != null) {
 			e.updateState(state, eventQueue);
 		}
 	}

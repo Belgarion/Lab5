@@ -32,10 +32,10 @@ public class MainSim {
 		CarWashView view = new CarWashView(state);
 		EventQueue queue = new EventQueue();
 
-		state.setNumMachines(fast, slow);
 		state.setDistribution(fastMin, fastMax, slowMin, slowMax, lambda);
 		state.setSeed(seed);
 		state.setMaxQueueSize(maxQueueSize);
+		state.setNumMachines(fast, slow);
 
 		queue.insert(new StartEvent());
 		queue.insert(new StopEvent(stopTime));

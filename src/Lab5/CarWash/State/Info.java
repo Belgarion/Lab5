@@ -12,6 +12,7 @@ public class Info {
 	public int maxQueueSize;
 	public double meanQueueingTime;
 	public double currentTime;
+	public double lastTime;
 	public double fastDistributionMin;
 	public double fastDistributionMax;
 	public double slowDistributionMin;

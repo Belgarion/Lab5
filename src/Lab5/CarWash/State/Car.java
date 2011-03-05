@@ -18,7 +18,11 @@ public class Car {
 		return e.getTime() - this.arriveTime;
 	}
 
-	public void setArriveTime(int time){
+	public void setArriveTime(double time) {
 		this.arriveTime = time;
+	}
+
+	public double getArriveTime() {
+		return arriveTime;
 	}
 }

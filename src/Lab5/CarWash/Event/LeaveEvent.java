@@ -5,17 +5,16 @@ import Lab5.Simulator.State.SimState;
 import Lab5.Simulator.Event.EventQueue;
 
 public class LeaveEvent extends CarWashEvent {
-	
+
 	public LeaveEvent(Car car, double time){//creating a new event
-		this.car=car;
-		this.time = time;
+		super(time, car);
 	}
+
 	public void updateState(SimState state, EventQueue eventQueue) {
-		
 		//Update info
 		((CarWashState) state).updateStatus(this);
 //		//Alternativ lösning
-//		CarWashState s = (CarWashState) state; 
+//		CarWashState s = (CarWashState) state;
 //		s.getInfo().currentTime=this.time;
 //		s.removeFromMachines(this.car);
 //		if(s.getInfo().carsInQueue>0){//if there is cars in the queue
