@@ -21,8 +21,16 @@ public class ArriveEvent extends Event {
 		} else if (info.carsInQueue < info.maxQueueSize) {
 			//add to car queue
 			s.addToQueue(car);
-		} 
+		}else{
+			info.numRejectedCars++;
+		}
 		//if none of the if-statements is fulfilled the car is simply not used
+		s.setLastEvent(this);
+		//System.out.println(time);
 		eventQueue.insert(new ArriveEvent(s.nextAriveTime()));
+		s.doNotify();
+	}
+	public String toString(){
+		return "Arrive";
 	}
 }

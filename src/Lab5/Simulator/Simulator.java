@@ -4,6 +4,7 @@ import Lab5.Simulator.Event.EventQueue;
 import Lab5.Simulator.State.SimState;
 import Lab5.Simulator.View.SimView;
 import Lab5.Simulator.Event.Event;
+import Lab5.CarWash.State.CarWashState;//FIXME
 
 public class Simulator {
 	private SimState state;
@@ -18,7 +19,7 @@ public class Simulator {
 
 	public void run() {
 		Event e;
-		while ((e = eventQueue.get()) != null) {
+		while ((e = eventQueue.get()) != null && ((CarWashState)state).getInfo().currentTime<30) {
 			e.updateState(state, eventQueue);
 		}
 	}

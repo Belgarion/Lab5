@@ -7,8 +7,17 @@ import Lab5.Simulator.Event.EventQueue;
 import Lab5.CarWash.State.CarWashState;
 
 public class StartEvent extends Event {
+	public StartEvent(){
+		this.time=0.0;
+	}
 	public void updateState(SimState state, EventQueue eventQueue) {
-		((CarWashState)state).setLastEvent(this);
+		CarWashState s = (CarWashState)state; 
+		s.setLastEvent(this);
+		s.getInfo().currentTime=this.time;
+		eventQueue.insert(new ArriveEvent(s.nextAriveTime()));
 		((CarWashState)state).doNotify();
+	}
+	public String toString(){
+		return Double.toString(time);
 	}
 }

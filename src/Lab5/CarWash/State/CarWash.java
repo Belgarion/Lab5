@@ -16,14 +16,14 @@ public class CarWash {
 		this.type = type;
 		this.state=state;
 		Info info =state.getInfo();
-		if(type=="slow"){
+		if(type=="Slow"){
 			randStream = new UniformRandomStream(info.slowDistributionMax,info.slowDistributionMin,info.seed);
-		}else if(type == "fast"){
+		}else if(type == "Fast"){
 			randStream = new UniformRandomStream(info.fastDistributionMax,info.fastDistributionMin,info.seed);
 		}
-		
+
 	}
-	
+
 	public String getType(){
 		return type;
 	}
@@ -43,14 +43,16 @@ public class CarWash {
 	public int getCurrentCarId(){
 		return this.currentCarId;
 	}
-	
+
 	public boolean hasCar(Car car){
-		if(this.currentCar==car){
-			return true;
+		if(this.hasCar){
+			if(this.currentCar.getId()==car.getId()){
+				return true;
+			}
 		}
 		return false;
 	}
-	
+
 	public void addCar(Car car){
 		this.currentCar = car;
 		this.setHasCar(true);

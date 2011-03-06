@@ -11,17 +11,22 @@ public class LeaveEvent extends CarWashEvent {
 		this.time = time;
 	}
 	public void updateState(SimState state, EventQueue eventQueue) {
-		
-		//Update info
-		((CarWashState) state).updateStatus(this);
+//		
+//		//Update info
+//		((CarWashState) state).updateStatus(this);
 //		//Alternativ lösning
-//		CarWashState s = (CarWashState) state; 
-//		s.getInfo().currentTime=this.time;
-//		s.removeFromMachines(this.car);
+		CarWashState s = (CarWashState) state; 
+		s.getInfo().currentTime=this.time;
+		s.removeFromMachines(this.car);
 //		if(s.getInfo().carsInQueue>0){//if there is cars in the queue
 //			Car temp=s.removeFromQueue();
 //			double time = s.addToMachine(temp);
-//			eventQueue.insert(new LeaveEvent(temp, time));
+//			eventQueue.insert(new LeaveEvent(temp, time));	
 //		}
+		s.setLastEvent(this);
+		s.doNotify();
+	}
+	public String toString(){
+		return "Leave";
 	}
 }
