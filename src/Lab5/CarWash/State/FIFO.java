@@ -5,9 +5,10 @@ import java.util.Vector;
 public class FIFO<T> {
 	private Vector<T> v = new Vector<T>();
 
-	public FIFO(){
+	public FIFO() {
 		v = new Vector<T>();
 	}
+
 	public void insert(T o) {
 		v.add(o);
 	}

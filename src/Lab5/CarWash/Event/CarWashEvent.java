@@ -11,7 +11,7 @@ public abstract class CarWashEvent extends Event {
 		this.car = car;
 	}
 
-	public Car getCar(){
+	public Car getCar() {
 		return this.car;
 	}
 }

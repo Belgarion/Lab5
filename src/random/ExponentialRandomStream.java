@@ -1,4 +1,3 @@
-
 package random;
 
 import java.util.Random;
@@ -9,17 +8,16 @@ public class ExponentialRandomStream {
 	private double lambda;
 
 	public ExponentialRandomStream(double lambda, long seed) {
-	  	rand = new Random(seed);
-	  	this.lambda = lambda;
+		rand = new Random(seed);
+		this.lambda = lambda;
 	}
 
 	public ExponentialRandomStream(double lambda) {
 		rand = new Random();
-	    this.lambda = lambda;
+		this.lambda = lambda;
 	}
 
 	public double next() {
-	  	return -Math.log(rand.nextDouble())/lambda;
+		return -Math.log(rand.nextDouble()) / lambda;
 	}
 }
-
