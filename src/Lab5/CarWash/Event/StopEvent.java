@@ -9,7 +9,7 @@ import Lab5.CarWash.State.CarWashState;
 public class StopEvent extends Event {
 
 	public StopEvent(double time) {
-		super(time);
+		this.time = time;
 	}
 
 	public void updateState(SimState state, EventQueue eventQueue) {

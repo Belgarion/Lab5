@@ -19,6 +19,7 @@ public class Info {
 	public double slowDistributionMax;
 	public double lambda;
 	public int seed;
+	public Event currentEvent;
 	public Event lastEvent;
 	public int emptyFast;
 	public int emptySlow;

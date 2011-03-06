@@ -47,8 +47,10 @@ public class CarWash {
 	}
 
 	public boolean hasCar(Car car){
-		if(this.currentCar==car){
-			return true;
+		if(this.hasCar){
+			if(this.currentCar.getId()==car.getId()){
+				return true;
+			}
 		}
 		return false;
 	}

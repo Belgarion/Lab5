@@ -15,6 +15,7 @@ public class CarWashState extends SimState {
 	private Info info;
 	public CarFactory carFactory;
 	private Vector<CarWash> emptyMachines; //contains a list of all empty machines fast should be placed first in the vector and slow in the end
+	private double lastArriveTime=0;
 
 	public CarWashState(){
 		info = new Info();
@@ -125,21 +126,24 @@ public class CarWashState extends SimState {
 			info.emptyFast--;
 		} else {
 			info.emptySlow--;
+			//System.out.println("slow " + info.emptySlow);
 		}
-		return car.getArriveTime() + wash.timeInWash();
+		return info.currentTime + wash.timeInWash();
 	}
 
 	public void removeFromMachines(Car car) {
 		for (int i=0; i<fastWashes.size(); i++) {
 			if (fastWashes.elementAt(i).hasCar(car)) {
 				emptyMachines.add(fastWashes.elementAt(i));
-				fastWashes.remove(i);
+				fastWashes.elementAt(i).removeCar();
+				info.emptyFast++;
 			}
 		}
 		for (int i=0; i<slowWashes.size(); i++) {
 			if (slowWashes.elementAt(i).hasCar(car)) {
 				emptyMachines.add(slowWashes.elementAt(i));
-				slowWashes.remove(i);
+				slowWashes.elementAt(i).removeCar();
+				info.emptySlow++;
 			}
 		}
 	}
@@ -156,10 +160,8 @@ public class CarWashState extends SimState {
 		return car;
 	}
 
-	public double nextArriveTime() {
-		double t = randCarStream.next();
-		info.lastTime += t;
-		return info.lastTime;
+	public double nextArriveTime(){
+		return lastArriveTime = lastArriveTime+randCarStream.next();
 	}
 	//***************************************************
 }

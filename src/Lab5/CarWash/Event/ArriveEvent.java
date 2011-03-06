@@ -27,9 +27,11 @@ public class ArriveEvent extends CarWashEvent {
 		} else if (info.carsInQueue < info.maxQueueSize) {
 			//add to car queue
 			s.addToQueue(car);
+		} else {
+			info.numRejectedCars++;
 		}
 
-		// if none of the if-statements is fulfilled the car is simply not used
+		//if none of the if-statements is fulfilled the car is simply not used
 		eventQueue.insert(new ArriveEvent(s.nextArriveTime(), s.carFactory.createCar()));
 	}
 }
