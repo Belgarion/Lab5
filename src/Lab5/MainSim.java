@@ -7,8 +7,6 @@ import Lab5.Simulator.Simulator;
 import Lab5.CarWash.Event.StartEvent;
 import Lab5.CarWash.Event.StopEvent;
 
-//Fixed all warnings, did various optimizations, fixed support for multiple views, fixed fast car wash priority
-
 public class MainSim {
 	public static void main(String[] args) {
 		// if (args.length < 10) {
