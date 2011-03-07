@@ -36,7 +36,6 @@
 			<fileset dir="src">
 				<include name="*.java" />
 			</fileset>
-			<classpath refid="files-classpath" />
 		</javadoc>
 	</target>
 </project>

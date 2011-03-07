@@ -24,7 +24,7 @@ public class LeaveEvent extends CarWashEvent {
 	 * It removes the car from the CarWashes and if the car queue
 	 * isn't empty add a new car from that queue to the machines.
 	 * @param state the state wich is to be updated
-	 * @param eventqueue the eventqueue from where the event came from
+	 * @param eventQueue the eventqueue from where the event came from
 	 */
 	public void updateState(SimState state, EventQueue eventQueue) {
 		CarWashState s = (CarWashState) state;
