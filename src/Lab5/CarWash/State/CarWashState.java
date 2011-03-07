@@ -89,8 +89,6 @@ public class CarWashState extends SimState {
 		info.maxQueueSize = maxQueueSize;
 	}
 
-	// ***************************************************
-	// Added by Andreas Nielsen
 	public double addToMachine(Car car) { // Returns the time it should come out
 											// of the machine
 		CarWash wash = emptyMachines.remove(0); // removes the first element and
@@ -100,6 +98,12 @@ public class CarWashState extends SimState {
 			info.emptyFast--;
 		} else {
 			info.emptySlow--;
+		}
+		for(CarWash cw : slowWashes){
+			info.totalIdleTime=info.totalIdleTime+cw.getIdleTime();
+		}
+		for(CarWash cw : fastWashes){
+			
 		}
 		return info.currentTime + wash.timeInWash();
 	}
