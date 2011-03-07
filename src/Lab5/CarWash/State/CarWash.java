@@ -11,6 +11,7 @@ public class CarWash {
 	private String type;
 	private double lastUsed;
 	private CarWashState state;
+	private boolean hasHadaCar;
 
 	public CarWash(String type, CarWashState state) {
 		this.type = type;
@@ -24,6 +25,7 @@ public class CarWash {
 					info.fastDistributionMax, info.seed);
 		}
 		lastUsed=0;
+		hasHadaCar=false;
 	}
 
 	public String getType() {
@@ -48,6 +50,7 @@ public class CarWash {
 	}
 
 	public void addCar(Car car) {
+		hasHadaCar= true;
 		this.currentCar = car;
 		this.setHasCar(true);
 		idleTime = idleTime + (state.getInfo().currentTime - lastUsed);
@@ -68,8 +71,8 @@ public class CarWash {
 	}
 	
 	public double getIdleTime(){
-		if(idleTime==0){
-			idleTime=state.getInfo().currentTime;
+		if(!hasHadaCar){
+			return state.getInfo().currentTime;
 		}
 		return idleTime;
 	}

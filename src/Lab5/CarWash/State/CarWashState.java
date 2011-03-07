@@ -87,19 +87,23 @@ public class CarWashState extends SimState {
 	public double addToMachine(Car car) { // Returns the time it should come out
 											// of the machine
 		CarWash wash = emptyMachines.remove(0); // removes the first element and
-												// adds the car to it
+
+						
+		// adds the car to it
 		wash.addCar(car);
 		if (wash.getType() == "Fast") {
 			info.emptyFast--;
 		} else {
 			info.emptySlow--;
 		}
+		
+		info.totalIdleTime=0;
 		for(CarWash cw : slowWashes){
 			info.totalIdleTime=info.totalIdleTime+cw.getIdleTime();
 		}
 		for(CarWash cw : fastWashes){
-			
-		}
+			info.totalIdleTime=info.totalIdleTime+cw.getIdleTime();
+		}	
 		return info.currentTime + wash.timeInWash();
 	}
 
