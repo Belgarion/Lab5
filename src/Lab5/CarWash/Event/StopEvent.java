@@ -13,7 +13,7 @@ public class StopEvent extends Event {
 	}
 
 	public void updateState(SimState state, EventQueue eventQueue) {
-		CarWashState cwState = (CarWashState)state;
+		CarWashState cwState = (CarWashState) state;
 		cwState.setLastEvent(this);
 		cwState.doNotify();
 		cwState.stop();

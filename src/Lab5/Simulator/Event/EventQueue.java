@@ -7,7 +7,8 @@ public class EventQueue extends SortedSequence<Event> {
 		this.removeFirst();
 		return event;
 	}
-	public void removeAllEllementsFromQueue(){
+
+	public void removeAllEllementsFromQueue() {
 		seq.clear();
 	}
 }

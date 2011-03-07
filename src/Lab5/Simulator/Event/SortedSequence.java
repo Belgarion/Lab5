@@ -1,11 +1,9 @@
 package Lab5.Simulator.Event;
-import java.util.Vector;
 
-import Lab5.CarWash.State.CarWash;
+import java.util.Vector;
 
 public class SortedSequence<E extends Comparable<E>> {
 	Vector<E> seq = new Vector<E>();
-
 
 	public void insert(E o) {
 		if (seq.isEmpty()) {
@@ -18,22 +16,18 @@ public class SortedSequence<E extends Comparable<E>> {
 			}
 		} else {
 			int i = 0;
-			while (o.compareTo(seq.elementAt(i)) > 0 && i < seq.size()-1) {
+			while (o.compareTo(seq.elementAt(i)) > 0 && i < seq.size() - 1) {
 				i++;
 			}
-			if (o.compareTo(seq.elementAt(seq.size()-1)) < 0) {
+			if (o.compareTo(seq.elementAt(seq.size() - 1)) < 0) {
 				seq.add(i, o);
 			} else {
 				seq.add(o);
 			}
 		}
-//		for(E e : seq){
-//			System.out.print(e + ", ");
-//		}
-//		System.out.println("");
-
 	}
-	public int size(){
+
+	public int size() {
 		return seq.size();
 	}
 

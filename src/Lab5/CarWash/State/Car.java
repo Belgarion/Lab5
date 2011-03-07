@@ -10,7 +10,7 @@ public class Car {
 		this.id = id;
 	}
 
-	public int getId(){
+	public int getId() {
 		return this.id;
 	}
 

@@ -9,7 +9,7 @@ public class CarWash {
 	private double idleTime;
 	private Car currentCar;
 	private String type;
-	private double lastUsed=0;
+	private double lastUsed = 0;
 	private CarWashState state;
 
 	public CarWash(String type, CarWashState state) {
@@ -26,52 +26,44 @@ public class CarWash {
 
 	}
 
-	public String getType(){
+	public String getType() {
 		return type;
 	}
 
-	public boolean isEmpty(){
+	public boolean isEmpty() {
 		return !this.hasCar;
 	}
 
-	//Maybe better to create sub-classes?
-	public boolean isFast(){
-		if(type=="fast"){
-			return true;
-		}
-		return false;
-	}
-
-	public int getCurrentCarId(){
+	public int getCurrentCarId() {
 		return this.currentCarId;
 	}
 
-	public boolean hasCar(Car car){
-		if(this.hasCar){
-			if(this.currentCar.getId()==car.getId()){
+	public boolean hasCar(Car car) {
+		if (this.hasCar) {
+			if (this.currentCar.getId() == car.getId()) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public void addCar(Car car){
+	public void addCar(Car car) {
 		this.currentCar = car;
 		this.setHasCar(true);
-		idleTime=idleTime+(state.getInfo().currentTime-lastUsed);
+		idleTime = idleTime + (state.getInfo().currentTime - lastUsed);
 	}
 
-	public void removeCar(){
+	public void removeCar() {
 		this.currentCar = null;
 		this.setHasCar(false);
-		lastUsed=state.getInfo().currentTime;
+		lastUsed = state.getInfo().currentTime;
 	}
 
-	public void setHasCar(boolean hasCarNow){
+	public void setHasCar(boolean hasCarNow) {
 		this.hasCar = hasCarNow;
 	}
 
-	public double timeInWash(){
+	public double timeInWash() {
 		return randStream.next();
 	}
 }

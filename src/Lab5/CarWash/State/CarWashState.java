@@ -3,7 +3,6 @@ package Lab5.CarWash.State;
 import java.util.Vector;
 
 import random.ExponentialRandomStream;
-import Lab5.CarWash.Event.CarWashEvent;
 import Lab5.Simulator.State.SimState;
 import Lab5.Simulator.Event.Event;
 
@@ -14,10 +13,13 @@ public class CarWashState extends SimState {
 	private FIFO<Car> queue;
 	private Info info;
 	public CarFactory carFactory;
-	private Vector<CarWash> emptyMachines; //contains a list of all empty machines fast should be placed first in the vector and slow in the end
-	private double lastArriveTime=0;
+	private Vector<CarWash> emptyMachines; // contains a list of all empty
+											// machines fast should be placed
+											// first in the vector and slow in
+											// the end
+	private double lastArriveTime = 0;
 
-	public CarWashState(){
+	public CarWashState() {
 		info = new Info();
 		fastWashes = new Vector<CarWash>();
 		slowWashes = new Vector<CarWash>();
@@ -41,40 +43,6 @@ public class CarWashState extends SimState {
 		notifyObservers();
 	}
 
-	public void updateStatus(CarWashEvent e) {
-
-		// Om denna ska användas även i ArriveEvent borde man kolla vilket event
-		// man behandlar.
-
-		// Update number of empty machines
-		info.emptyFast = 0;
-		for (CarWash o : fastWashes) {
-			if (o.isEmpty()) {
-				info.emptyFast++;
-			}
-
-			// Kanske funkar
-			if (o.getCurrentCarId() == e.getCar().getId()) {
-				o.setHasCar(false);
-			}
-		}
-
-		info.emptySlow = 0;
-		for (CarWash o : slowWashes) {
-			if (o.isEmpty()) {
-				info.emptySlow++;
-			}
-
-			// Kanske funkar
-			if (o.getCurrentCarId() == e.getCar().getId()) {
-				o.setHasCar(false);
-			}
-		}
-
-		setLastEvent(e);
-		doNotify();
-	}
-
 	public void setNumMachines(int fast, int slow) {
 		info.numFastWashes = info.emptyFast = fast;
 		info.numSlowWashes = info.emptySlow = slow;
@@ -83,15 +51,13 @@ public class CarWashState extends SimState {
 		slowWashes.clear();
 		emptyMachines.clear();
 
-		//Create slow and fast washes
-		for(int f = 0; f < info.numFastWashes; f++){
-			//TODO Parameters for CarWash
+		// Create slow and fast washes
+		for (int f = 0; f < info.numFastWashes; f++) {
 			CarWash cw = new CarWash("Fast", this);
 			fastWashes.add(cw);
-			emptyMachines.add(cw);
+			emptyMachines.add(0, cw);
 		}
-		for(int s = 0; s < info.numSlowWashes; s++){
-			//TODO Parameters for CarWash
+		for (int s = 0; s < info.numSlowWashes; s++) {
 			CarWash cw = new CarWash("Slow", this);
 			slowWashes.add(cw);
 			emptyMachines.add(cw);
@@ -117,35 +83,36 @@ public class CarWashState extends SimState {
 	public void setMaxQueueSize(int maxQueueSize) {
 		info.maxQueueSize = maxQueueSize;
 	}
-	//***************************************************
-	//Added by Andreas Nielsen
-	public double addToMachine(Car car) { //Returns the time it should come out of the machine
-		// This line is the suspect of odd leave times.
-		CarWash wash = emptyMachines.remove(0); //removes the first element and adds the car to it
+
+	// ***************************************************
+	// Added by Andreas Nielsen
+	public double addToMachine(Car car) { // Returns the time it should come out
+											// of the machine
+		CarWash wash = emptyMachines.remove(0); // removes the first element and
+												// adds the car to it
 		wash.addCar(car);
 		if (wash.getType() == "Fast") {
 			info.emptyFast--;
 		} else {
 			info.emptySlow--;
-			//System.out.println("slow " + info.emptySlow);
 		}
 		return info.currentTime + wash.timeInWash();
 	}
 
 	public void removeFromMachines(Car car) {
-		for (int i=0; i<fastWashes.size(); i++) {
-			if (fastWashes.elementAt(i).hasCar(car)) {
-				// FIXME: empty carwash always added to end of emptyMachines,
-				// this needs sorting for cars to go into the correct machine.
-				emptyMachines.add(fastWashes.elementAt(i));
-				fastWashes.elementAt(i).removeCar();
+
+		for (CarWash cw : fastWashes) {
+			if (cw.hasCar(car)) {
+				emptyMachines.add(0, cw);
+				cw.removeCar();
 				info.emptyFast++;
 			}
 		}
-		for (int i=0; i<slowWashes.size(); i++) {
-			if (slowWashes.elementAt(i).hasCar(car)) {
-				emptyMachines.add(slowWashes.elementAt(i));
-				slowWashes.elementAt(i).removeCar();
+
+		for (CarWash cw : slowWashes) {
+			if (cw.hasCar(car)) {
+				emptyMachines.add(cw);
+				cw.removeCar();
 				info.emptySlow++;
 			}
 		}
@@ -163,8 +130,8 @@ public class CarWashState extends SimState {
 		return car;
 	}
 
-	public double nextArriveTime(){
-		return lastArriveTime = lastArriveTime+randCarStream.next();
+	public double nextArriveTime() {
+		return lastArriveTime = lastArriveTime + randCarStream.next();
 	}
-	//***************************************************
+	// ***************************************************
 }
