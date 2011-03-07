@@ -12,18 +12,11 @@ public class CarWash {
 	private double lastUsed = 0;
 	private CarWashState state;
 
-	public CarWash(String type, CarWashState state) {
+	public CarWash(String type, CarWashState state, UniformRandomStream randStream) {
 		this.type = type;
 		this.state = state;
 		Info info = state.getInfo();
-		if (type == "Slow") {
-			randStream = new UniformRandomStream(info.slowDistributionMin,
-					info.slowDistributionMax, info.seed);
-		} else if (type == "Fast") {
-			randStream = new UniformRandomStream(info.fastDistributionMin,
-					info.fastDistributionMax, info.seed);
-		}
-
+		this.randStream = randStream;
 	}
 
 	public String getType() {
