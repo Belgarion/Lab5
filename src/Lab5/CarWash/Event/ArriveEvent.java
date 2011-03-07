@@ -35,8 +35,10 @@ public class ArriveEvent extends CarWashEvent {
 		if (info.emptyFast > 0 || info.emptySlow > 0) {
 			// add car to fastWash or slowWash
 			eventQueue.insert(new LeaveEvent(car, s.addToMachine(car)));
+			info.numCarsEntered++;
 		} else if (info.carsInQueue < info.maxQueueSize) {
 			// add to car queue
+			info.numCarsEntered++;
 			s.addToQueue(car);
 		} else {
 			info.numRejectedCars++;

@@ -65,7 +65,7 @@ public class CarWashView extends SimView {
 			carId = ((CarWashEvent)i.lastEvent).getCar().getId();
 		}
 
-		System.out.format("%10.2f      %-8s %2s    %2d      %2d       %2.2f       %2.2f         %2d        %2d\n",
+		System.out.format("%10.2f      %-8s %2s    %2d      %2d       %5.2f      %5.2f        %2d        %2d\n",
 						e.getTime(), eventType, carId >= 0 ? carId : "",
 						i.emptyFast, i.emptySlow, i.totalIdleTime,
 						state.getTotalQueueingTime(), i.carsInQueue,
@@ -78,7 +78,7 @@ public class CarWashView extends SimView {
 			System.out.format("Total queueing time:     %.2f\n",
 					state.getTotalQueueingTime());
 			System.out.format("Mean queueing time:      %.2f\n",
-					i.meanQueueingTime);
+					state.getMeanQueueingTime());
 			System.out.format("Rejected cars:         %3d", i.numRejectedCars);
 		}
 	}
