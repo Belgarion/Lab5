@@ -22,8 +22,7 @@ public abstract class Event implements Comparable<Event> {
 	public int compareTo(Event event) {
 		if (this.time < event.time) {
 			return -1;
-		}
-		if (this.time > event.time) {
+		} else if (this.time > event.time) {
 			return 1;
 		}
 		return 0;

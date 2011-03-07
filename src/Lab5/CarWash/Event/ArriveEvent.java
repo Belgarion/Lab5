@@ -13,8 +13,6 @@ public class ArriveEvent extends CarWashEvent {
 
 	public void updateState(SimState state, EventQueue eventQueue) {
 		CarWashState s = (CarWashState) state;
-		s.setLastEvent(this);
-		s.doNotify();
 
 		Info info = s.getInfo();
 
@@ -29,7 +27,8 @@ public class ArriveEvent extends CarWashEvent {
 		} else {
 			info.numRejectedCars++;
 		}
-
+		s.setLastEvent(this);
+		s.doNotify();
 		// if none of the if-statements is fulfilled the car is simply not used
 		eventQueue.insert(new ArriveEvent(s.nextArriveTime(), s.carFactory
 				.createCar()));

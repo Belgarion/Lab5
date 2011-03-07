@@ -8,22 +8,10 @@ public class SortedSequence<E extends Comparable<E>> {
 	public void insert(E o) {
 		if (seq.isEmpty()) {
 			seq.add(o);
-		} else if (seq.size() == 1) {
-			if (o.compareTo(seq.elementAt(0)) > 0) {
-				seq.add(o);
-			} else {
-				seq.add(0, o);
-			}
 		} else {
 			int i = 0;
-			while (o.compareTo(seq.elementAt(i)) > 0 && i < seq.size() - 1) {
-				i++;
-			}
-			if (o.compareTo(seq.elementAt(seq.size() - 1)) < 0) {
-				seq.add(i, o);
-			} else {
-				seq.add(o);
-			}
+			for (;o.compareTo(seq.elementAt(i)) > 0 && i < seq.size() - 1; i++);
+			seq.add( (o.compareTo(seq.get(seq.size() - 1)) < 0) ? i : i + 1, o);
 		}
 	}
 
@@ -38,9 +26,6 @@ public class SortedSequence<E extends Comparable<E>> {
 	}
 
 	public E first() {
-		if (seq.size() > 0) {
-			return seq.elementAt(0);
-		}
-		return null;
+		return seq.size() > 0 ? seq.elementAt(0) : null;
 	}
 }

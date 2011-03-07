@@ -27,6 +27,11 @@ public class CarWashView extends SimView {
 		print(state.getInfo());
 	}
 
+	/**
+	 * Prints the info.
+	 *
+	 * @param i Info
+	 */
 	public void print(Info i) {
 		Matcher m = typePattern.matcher(i.lastEvent.getClass().getName());
 		boolean matchFound = m.find();

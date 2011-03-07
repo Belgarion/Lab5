@@ -33,10 +33,8 @@ public class CarWash {
 	}
 
 	public boolean hasCar(Car car) {
-		if (this.hasCar) {
-			if (this.currentCar.getId() == car.getId()) {
-				return true;
-			}
+		if (this.hasCar && this.currentCar.getId() == car.getId()) {
+			return true;
 		}
 		return false;
 	}
@@ -62,7 +60,7 @@ public class CarWash {
 	}
 
 	public double getIdleTime(){
-		if (idleTime == 0) {
+		if (lastUsed == 0 && idleTime == 0) {
 			return state.getInfo().currentTime;
 		}
 		return idleTime;
