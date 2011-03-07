@@ -9,7 +9,7 @@ public class CarWash {
 	private double idleTime;
 	private Car currentCar;
 	private String type;
-	private double lastUsed = 0;
+	private double lastUsed;
 	private CarWashState state;
 
 	public CarWash(String type, CarWashState state) {
@@ -23,7 +23,7 @@ public class CarWash {
 			randStream = new UniformRandomStream(info.fastDistributionMin,
 					info.fastDistributionMax, info.seed);
 		}
-
+		lastUsed=0;
 	}
 
 	public String getType() {
@@ -65,5 +65,12 @@ public class CarWash {
 
 	public double timeInWash() {
 		return randStream.next();
+	}
+	
+	public double getIdleTime(){
+		if(idleTime==0){
+			idleTime=state.getInfo().currentTime;
+		}
+		return idleTime;
 	}
 }
