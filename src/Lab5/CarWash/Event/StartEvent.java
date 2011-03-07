@@ -5,7 +5,11 @@ import Lab5.Simulator.State.SimState;
 import Lab5.Simulator.Event.EventQueue;
 
 import Lab5.CarWash.State.CarWashState;
-
+/**
+ * A StartEvent symbolizing when the simulation starts
+ * @author Andreas Nielsen, Fredrik Lind, Sebastian Larsson
+ *
+ */
 public class StartEvent extends Event {
 	public StartEvent() {
 		this.time = 0.0;
