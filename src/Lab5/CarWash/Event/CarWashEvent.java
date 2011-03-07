@@ -10,7 +10,7 @@ import Lab5.CarWash.State.Car;
  */
 public abstract class CarWashEvent extends Event {
 	protected Car car;
-	
+
 	/**
 	 * Constructs a carWashEvent with a specific car
 	 * @param time the time the event will occur

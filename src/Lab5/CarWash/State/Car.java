@@ -2,6 +2,10 @@ package Lab5.CarWash.State;
 
 import Lab5.Simulator.Event.Event;
 
+/**
+ * A Car.
+ * Has an id number and the time it arrived.
+ */
 public class Car {
 	private int id;
 	private double arriveTime;

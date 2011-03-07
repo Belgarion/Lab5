@@ -21,7 +21,8 @@ public class LeaveEvent extends CarWashEvent {
 
 	/**
 	 * updates the state with the changes that a LeaveEvent causes.
-	 * It removes the car from the CarWashes and if the car queue isnt empty add a new car from that queue to the machines
+	 * It removes the car from the CarWashes and if the car queue
+	 * isn't empty add a new car from that queue to the machines.
 	 * @param state the state wich is to be updated
 	 * @param eventqueue the eventqueue from where the event came from
 	 */

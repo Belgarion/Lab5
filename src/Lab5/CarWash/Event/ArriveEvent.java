@@ -5,9 +5,9 @@ import Lab5.Simulator.Event.EventQueue;
 
 import Lab5.CarWash.State.*;
 /**
- * A class for ArriveEvents in a CarWash. Symbolizes the arrival of a car to a carwash.
+ * A class for ArriveEvents in a CarWash.
+ * Symbolizes the arrival of a car to a carwash.
  * @author Andreas Nielsen, Fredrik Lind, Sebastian Larsson
- *
  */
 public class ArriveEvent extends CarWashEvent {
 	/**
@@ -45,8 +45,9 @@ public class ArriveEvent extends CarWashEvent {
 		}
 		s.setLastEvent(this);
 		s.doNotify();
+
 		// if none of the if-statements is fulfilled the car is simply not used
-		eventQueue.insert(new ArriveEvent(s.nextArriveTime(), s.carFactory
-				.createCar()));
+		eventQueue.insert(new ArriveEvent(s.nextArriveTime(),
+					s.carFactory.createCar()));
 	}
 }

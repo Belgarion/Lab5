@@ -19,8 +19,8 @@ public class StartEvent extends Event {
 		CarWashState s = (CarWashState) state;
 		s.setLastEvent(this);
 		s.getInfo().currentTime = this.time;
-		eventQueue.insert(new ArriveEvent(s.nextArriveTime(), s.carFactory
-				.createCar()));
+		eventQueue.insert(new ArriveEvent(s.nextArriveTime(),
+					s.carFactory.createCar()));
 		s.doNotify();
 	}
 }
