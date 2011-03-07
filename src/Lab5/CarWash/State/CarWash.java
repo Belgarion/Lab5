@@ -13,19 +13,13 @@ public class CarWash {
 	private CarWashState state;
 	private boolean hasHadaCar;
 
-	public CarWash(String type, CarWashState state) {
+	public CarWash(String type, CarWashState state, UniformRandomStream randStream) {
 		this.type = type;
 		this.state = state;
 		Info info = state.getInfo();
-		if (type == "Slow") {
-			randStream = new UniformRandomStream(info.slowDistributionMin,
-					info.slowDistributionMax, info.seed);
-		} else if (type == "Fast") {
-			randStream = new UniformRandomStream(info.fastDistributionMin,
-					info.fastDistributionMax, info.seed);
-		}
-		lastUsed=0;
 		hasHadaCar=false;
+		this.randStream = randStream;
+		lastUsed = 0;
 	}
 
 	public String getType() {

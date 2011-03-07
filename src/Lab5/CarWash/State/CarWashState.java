@@ -3,6 +3,7 @@ package Lab5.CarWash.State;
 import java.util.Vector;
 
 import random.ExponentialRandomStream;
+import random.UniformRandomStream;
 import Lab5.Simulator.State.SimState;
 import Lab5.Simulator.Event.Event;
 
@@ -10,6 +11,8 @@ public class CarWashState extends SimState {
 	private Vector<CarWash> fastWashes;
 	private Vector<CarWash> slowWashes;
 	private ExponentialRandomStream randCarStream;
+	private UniformRandomStream slowRandomStream;
+	private UniformRandomStream fastRandomStream;;
 	private FIFO<Car> queue;
 	private Info info;
 	public CarFactory carFactory;
@@ -53,12 +56,12 @@ public class CarWashState extends SimState {
 
 		// Create slow and fast washes
 		for (int f = 0; f < info.numFastWashes; f++) {
-			CarWash cw = new CarWash("Fast", this);
+			CarWash cw = new CarWash("Fast", this, fastRandomStream);
 			fastWashes.add(cw);
 			emptyMachines.add(0, cw);
 		}
 		for (int s = 0; s < info.numSlowWashes; s++) {
-			CarWash cw = new CarWash("Slow", this);
+			CarWash cw = new CarWash("Slow", this, slowRandomStream);
 			slowWashes.add(cw);
 			emptyMachines.add(cw);
 		}
@@ -74,6 +77,8 @@ public class CarWashState extends SimState {
 		info.lambda = lambda;
 
 		randCarStream = new ExponentialRandomStream(info.lambda, info.seed);
+		fastRandomStream = new UniformRandomStream(fastMin, fastMax, info.seed);
+		slowRandomStream = new UniformRandomStream(slowMin, slowMax, info.seed);
 	}
 
 	public void setSeed(int seed) {

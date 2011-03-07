@@ -1,7 +1,7 @@
 package Lab5.CarWash.State;
 
 public class CarFactory {
-	private int lastId;
+	private int lastId = -1;
 
 	public Car createCar() {
 		lastId += 1;
