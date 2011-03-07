@@ -2,7 +2,7 @@ package Lab5.CarWash.State;
 
 import java.util.Vector;
 
-public class FIFO<T> {
+public class FIFO<T> implements Iterable<T> {
 	private Vector<T> v = new Vector<T>();
 
 	public FIFO() {
