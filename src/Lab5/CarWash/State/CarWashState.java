@@ -159,4 +159,8 @@ public class CarWashState extends SimState {
 
 		return info.totalQueueingTime + queueTime;
 	}
+
+	public double getMeanQueueingTime() {
+		return getTotalQueueingTime() / info.numCarsEntered;
+	}
 }
