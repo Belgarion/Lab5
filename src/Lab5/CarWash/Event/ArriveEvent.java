@@ -10,7 +10,6 @@ import Lab5.CarWash.State.*;
  *
  */
 public class ArriveEvent extends CarWashEvent {
-	
 	/**
 	 * Constructs an ArriveEvent
 	 * @param time The time the event will occur

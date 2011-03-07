@@ -6,6 +6,7 @@ import Lab5.CarWash.State.CarWashState;
 import Lab5.CarWash.Event.StartEvent;
 import Lab5.CarWash.Event.StopEvent;
 import Lab5.CarWash.Event.CarWashEvent;
+import Lab5.Simulator.Event.Event;
 
 import java.util.Observable;
 import java.util.regex.Pattern;
@@ -55,28 +56,30 @@ public class CarWashView extends SimView {
 			System.out
 					.println("      Time      Event    Id    Fast    Slow    IdleTime  QueueTime  QueueSize   Rejected");
 			System.out.format("%10.2f      Start\n", i.lastEvent.getTime());
-		} else if (i.lastEvent instanceof StopEvent) {
-			System.out.format("%10.2f      %-8s \n", i.lastEvent.getTime(),
-					"Stop");
-			System.out.println("----------------------------------------");
-			System.out.format("Total idle machine time: %.2f\n", i.totalIdleTime);
-			System.out.println("Total queueing time:     "
-					+ i.totalQueueingTime);
-			System.out
-					.println("Mean queueing time:      " + i.meanQueueingTime);
-			System.out.println("Rejected cars:           " + i.numRejectedCars);
-		} else if (i.lastEvent instanceof CarWashEvent) {
-			CarWashEvent e = (CarWashEvent) i.lastEvent;
+			return;
+		}
 
-			System.out
-					.format("%10.2f      %-8s %2d    %2d      %2d       %2.2f       %2.2f         %2d        %2d\n",
-							e.getTime(), eventType, e.getCar().getId(),
-							i.emptyFast, i.emptySlow, i.totalIdleTime,
-							i.totalQueueingTime, i.carsInQueue,
-							i.numRejectedCars);
-		} else {
-			System.out.format("%10.2f      %-8s\n", i.lastEvent.getTime(),
-					eventType);
+		int carId = -1;
+		Event e = i.lastEvent;
+		if (i.lastEvent instanceof CarWashEvent) {
+			carId = ((CarWashEvent)i.lastEvent).getCar().getId();
+		}
+
+		System.out.format("%10.2f      %-8s %2s    %2d      %2d       %2.2f       %2.2f         %2d        %2d\n",
+						e.getTime(), eventType, carId >= 0 ? carId : "",
+						i.emptyFast, i.emptySlow, i.totalIdleTime,
+						state.getTotalQueueingTime(), i.carsInQueue,
+						i.numRejectedCars);
+
+		if (i.lastEvent instanceof StopEvent) {
+			System.out.println("----------------------------------------");
+			System.out.format("Total idle machine time: %.2f\n",
+					i.totalIdleTime);
+			System.out.format("Total queueing time:     %.2f\n",
+					state.getTotalQueueingTime());
+			System.out.format("Mean queueing time:      %.2f\n",
+					i.meanQueueingTime);
+			System.out.format("Rejected cars:         %3d", i.numRejectedCars);
 		}
 	}
 }

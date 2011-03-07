@@ -28,4 +28,8 @@ public class FIFO<T> {
 	public boolean isEmpty() {
 		return v.isEmpty();
 	}
+
+	public T get(int index) {
+		return v.get(index);
+	}
 }

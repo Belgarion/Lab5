@@ -39,6 +39,7 @@ public class CarWashState extends SimState {
 
 	public void setLastEvent(Event e) {
 		info.lastEvent = e;
+		info.currentTime = e.getTime();
 	}
 
 	public void doNotify() {
@@ -148,5 +149,14 @@ public class CarWashState extends SimState {
 
 	public double nextArriveTime() {
 		return lastArriveTime += randCarStream.next();
+	}
+
+	public double getTotalQueueingTime() {
+		double queueTime = 0;
+		for (int i = 0; i < queue.size(); i++) {
+			queueTime += info.currentTime - queue.get(i).getArriveTime();
+		}
+
+		return info.totalQueueingTime + queueTime;
 	}
 }
