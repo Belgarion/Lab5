@@ -16,7 +16,6 @@ public class CarWash {
 	public CarWash(String type, CarWashState state, UniformRandomStream randStream) {
 		this.type = type;
 		this.state = state;
-		Info info = state.getInfo();
 		hasHadaCar=false;
 		this.randStream = randStream;
 		lastUsed = 0;
