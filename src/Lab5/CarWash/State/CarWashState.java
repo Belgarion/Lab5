@@ -120,6 +120,7 @@ public class CarWashState extends SimState {
 	//***************************************************
 	//Added by Andreas Nielsen
 	public double addToMachine(Car car) { //Returns the time it should come out of the machine
+		// This line is the suspect of odd leave times.
 		CarWash wash = emptyMachines.remove(0); //removes the first element and adds the car to it
 		wash.addCar(car);
 		if (wash.getType() == "Fast") {
@@ -134,6 +135,8 @@ public class CarWashState extends SimState {
 	public void removeFromMachines(Car car) {
 		for (int i=0; i<fastWashes.size(); i++) {
 			if (fastWashes.elementAt(i).hasCar(car)) {
+				// FIXME: empty carwash always added to end of emptyMachines,
+				// this needs sorting for cars to go into the correct machine.
 				emptyMachines.add(fastWashes.elementAt(i));
 				fastWashes.elementAt(i).removeCar();
 				info.emptyFast++;
