@@ -2,8 +2,9 @@ package Lab5.CarWash.State;
 
 import java.util.Vector;
 
-public class FIFO<T> {
+public class FIFO<T> implements java.lang.Iterable<T> {
 	private Vector<T> v = new Vector<T>();
+	private int currentElement = 0;
 
 	public FIFO() {
 		v = new Vector<T>();
@@ -29,7 +30,8 @@ public class FIFO<T> {
 		return v.isEmpty();
 	}
 
-	public T get(int index) {
-		return v.get(index);
+	public java.util.Iterator<T> iterator() {
+		return v.iterator();
 	}
+
 }
