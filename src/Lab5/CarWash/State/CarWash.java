@@ -60,10 +60,10 @@ public class CarWash {
 	public double timeInWash() {
 		return randStream.next();
 	}
-	
+
 	public double getIdleTime(){
-		if(idleTime==0){
-			idleTime=state.getInfo().currentTime;
+		if (idleTime == 0) {
+			return state.getInfo().currentTime;
 		}
 		return idleTime;
 	}

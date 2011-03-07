@@ -54,7 +54,7 @@ public class CarWashView extends SimView {
 			System.out.format("%10.2f      %-8s \n", i.lastEvent.getTime(),
 					"Stop");
 			System.out.println("----------------------------------------");
-			System.out.println("Total idle machine time: " + i.totalIdleTime);
+			System.out.format("Total idle machine time: %.2f\n", i.totalIdleTime);
 			System.out.println("Total queueing time:     "
 					+ i.totalQueueingTime);
 			System.out
