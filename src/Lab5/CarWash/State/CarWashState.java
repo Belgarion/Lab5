@@ -153,8 +153,8 @@ public class CarWashState extends SimState {
 
 	public double getTotalQueueingTime() {
 		double queueTime = 0;
-		for (int i = 0; i < queue.size(); i++) {
-			queueTime += info.currentTime - queue.get(i).getArriveTime();
+		for (Car c : queue) {
+			queueTime += info.currentTime - c.getArriveTime();
 		}
 
 		return info.totalQueueingTime + queueTime;
