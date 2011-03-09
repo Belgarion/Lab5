@@ -53,7 +53,7 @@ public class MainSim {
 		state.setSeed(seed);
 		state.setDistribution(fastMin, fastMax, slowMin, slowMax, lambda);
 		state.setMaxQueueSize(maxQueueSize);
-		state.setNumMachines(fast, slow);
+		state.createMachines(fast, slow);
 
 		queue.insert(new StartEvent());
 		queue.insert(new StopEvent(stopTime));

@@ -29,7 +29,7 @@ public class Car {
 
 	/**
 	 * Gets the cars queueing time.
-	 * @param Event
+	 * @param e The event to get queuing time for
 	 * @return queueing time.
 	 */
 	public double getQueueingTime(Event e) {
