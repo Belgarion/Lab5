@@ -48,26 +48,50 @@ public class Info {
 		return numSlowWashes;
 	}
 
+	/**
+	 * Method that returns the fast distributions minimum value used in the random number generator for the car washes 
+	 * @return minimum value of the fast distribution
+	 */
 	public double getFastDistributionMin(){
 		return fastDistributionMin;
 	}
 
+	/**
+	 * Method that returns the fast distributions maximum value used in the random number generator for the car washes 
+	 * @return maximum value of the fast distribution
+	 */
 	public double getFastDistributionMax(){
 		return fastDistributionMax;
 	}
 
+	/**
+	 * Method that returns the slow distributions minimum value used in the random number generator for the car washes
+	 * @return minimum value of the slow distribution
+	 */
 	public double getSlowDistributionMin(){
 		return slowDistributionMin;
 	}
 
+	/**
+	 * Method that returns the slow distributions maximum value used in the random number generator for the car washes
+	 * @return maximum value of the slow distribution
+	 */
 	public double getSlowDistributionMax(){
 		return slowDistributionMax;
 	}
 
+	/**
+	 * Method returning the lambda used in the exponential random number generator
+	 * @return lambda
+	 */
 	public double getLambda(){
 		return lambda;
 	}
 
+	/**
+	 * Method returning the seed for the random number generators
+	 * @return the seed
+	 */
 	public int getSeed(){
 		return seed;
 	}
