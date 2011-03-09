@@ -103,15 +103,6 @@ public class CarWashState extends SimState {
 			info.emptySlow--;
 		}
 
-		info.totalIdleTime = 0;
-
-		for (CarWash cw : slowWashes){
-			info.totalIdleTime = info.totalIdleTime + cw.getIdleTime();
-		}
-
-		for (CarWash cw : fastWashes){
-			info.totalIdleTime = info.totalIdleTime + cw.getIdleTime();
-		}
 
 		return info.currentTime + wash.timeInWash();
 	}
@@ -162,5 +153,19 @@ public class CarWashState extends SimState {
 
 	public double getMeanQueueingTime() {
 		return getTotalQueueingTime() / info.numCarsEntered;
+	}
+
+	public double getTotalIdleTime() {
+		double idle = 0;
+
+		for (CarWash cw : slowWashes){
+			idle += cw.getIdleTime();
+		}
+
+		for (CarWash cw : fastWashes){
+			idle += cw.getIdleTime();
+		}
+
+		return idle;
 	}
 }

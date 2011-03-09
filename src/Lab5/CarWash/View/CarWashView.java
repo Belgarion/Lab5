@@ -41,7 +41,9 @@ public class CarWashView extends SimView {
 			eventType = m.group(1);
 		}
 
-		if (i.lastEvent instanceof StartEvent) {
+		Event e = i.lastEvent;
+
+		if (e instanceof StartEvent) {
 			System.out.println("Fast machines: " + i.numFastWashes);
 			System.out.println("Slow machines: " + i.numSlowWashes);
 			System.out.println("Fast distribution: (" + i.fastDistributionMin
@@ -60,22 +62,21 @@ public class CarWashView extends SimView {
 		}
 
 		int carId = -1;
-		Event e = i.lastEvent;
-		if (i.lastEvent instanceof CarWashEvent) {
-			carId = ((CarWashEvent)i.lastEvent).getCar().getId();
+		if (e instanceof CarWashEvent) {
+			carId = ((CarWashEvent)e).getCar().getId();
 		}
 
 		System.out.format("%10.2f      %-8s %2s    %2d      %2d       %5.2f"
 				+ "      %5.2f        %2d        %2d\n",
 						e.getTime(), eventType, carId >= 0 ? carId : "",
-						i.emptyFast, i.emptySlow, i.totalIdleTime,
+						i.emptyFast, i.emptySlow, state.getTotalIdleTime(),
 						state.getTotalQueueingTime(), i.carsInQueue,
 						i.numRejectedCars);
 
-		if (i.lastEvent instanceof StopEvent) {
+		if (e instanceof StopEvent) {
 			System.out.println("----------------------------------------");
 			System.out.format("Total idle machine time: %.2f\n",
-					i.totalIdleTime);
+					state.getTotalIdleTime());
 			System.out.format("Total queueing time:     %.2f\n",
 					state.getTotalQueueingTime());
 			System.out.format("Mean queueing time:      %.2f\n",
