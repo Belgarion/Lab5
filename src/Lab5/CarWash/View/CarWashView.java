@@ -12,6 +12,10 @@ import java.util.Observable;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+/**
+ * The view of the carwash.
+ * @author Andreas Nielsen, Fredrik Lind, Sebastian Larsson
+ */
 public class CarWashView extends SimView {
 	private static final Pattern typePattern = Pattern
 			.compile(".*\\.(.*)Event");
@@ -23,6 +27,9 @@ public class CarWashView extends SimView {
 		this.state = state;
 	}
 
+	/**
+	 * Runs when the state notifies observers.
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		print(state.getInfo());

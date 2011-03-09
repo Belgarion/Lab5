@@ -26,7 +26,7 @@ public class Info {
 
 	/**
 	 * Method that gets the last event
-	 * 
+	 *
 	 * @return the last event that occured
 	 */
 	public Event getLastEvent() {
@@ -35,7 +35,7 @@ public class Info {
 
 	/**
 	 * method that gets the number of fast washes
-	 * 
+	 *
 	 * @return the number of fast washes
 	 */
 	public int getNumFastWashes() {
@@ -44,7 +44,7 @@ public class Info {
 
 	/**
 	 * method that returns the number of slow washes
-	 * 
+	 *
 	 * @return the number of slow washes
 	 */
 	public int getNumSlowWashes() {
@@ -54,7 +54,7 @@ public class Info {
 	/**
 	 * Method that returns the fast distributions minimum value used in the
 	 * random number generator for the car washes
-	 * 
+	 *
 	 * @return minimum value of the fast distribution
 	 */
 	public double getFastDistributionMin() {
@@ -64,7 +64,7 @@ public class Info {
 	/**
 	 * Method that returns the fast distributions maximum value used in the
 	 * random number generator for the car washes
-	 * 
+	 *
 	 * @return maximum value of the fast distribution
 	 */
 	public double getFastDistributionMax() {
@@ -74,7 +74,7 @@ public class Info {
 	/**
 	 * Method that returns the slow distributions minimum value used in the
 	 * random number generator for the car washes
-	 * 
+	 *
 	 * @return minimum value of the slow distribution
 	 */
 	public double getSlowDistributionMin() {
@@ -84,7 +84,7 @@ public class Info {
 	/**
 	 * Method that returns the slow distributions maximum value used in the
 	 * random number generator for the car washes
-	 * 
+	 *
 	 * @return maximum value of the slow distribution
 	 */
 	public double getSlowDistributionMax() {
@@ -94,7 +94,7 @@ public class Info {
 	/**
 	 * Method returning the lambda used in the exponential random number
 	 * generator
-	 * 
+	 *
 	 * @return lambda
 	 */
 	public double getLambda() {
@@ -103,7 +103,7 @@ public class Info {
 
 	/**
 	 * Method returning the seed for the random number generators
-	 * 
+	 *
 	 * @return the seed
 	 */
 	public int getSeed() {
@@ -112,7 +112,7 @@ public class Info {
 
 	/**
 	 * method returning the maximum length of the car queue
-	 * 
+	 *
 	 * @return the maximum length of the car queue
 	 */
 	public int getMaxQueueSize() {
@@ -121,7 +121,7 @@ public class Info {
 
 	/**
 	 * method returning the number of empty fast washes
-	 * 
+	 *
 	 * @return the number of empty fast washes
 	 */
 	public int getEmptyFast() {
@@ -130,7 +130,7 @@ public class Info {
 
 	/**
 	 * Method returning the number of empty slow washes of the state
-	 * 
+	 *
 	 * @return the number of empty slow washes of the state
 	 */
 	public int getEmptySlow() {
@@ -139,7 +139,7 @@ public class Info {
 
 	/**
 	 * Method returning the number of cars in the queue
-	 * 
+	 *
 	 * @return the number of cars in the queue
 	 */
 	public int getCarsInQueue() {
@@ -148,7 +148,7 @@ public class Info {
 
 	/**
 	 * Method returning the number of rejected cars
-	 * 
+	 *
 	 * @return the number of rejected cars of the state
 	 */
 	public int getNumRejectedCars() {
@@ -157,7 +157,7 @@ public class Info {
 
 	/**
 	 * method for setting the current time of the state
-	 * 
+	 *
 	 * @param time
 	 *            the current time to witch the state is to be updated to
 	 */
@@ -181,7 +181,7 @@ public class Info {
 
 	/**
 	 * method increasing the total queuing time
-	 * 
+	 *
 	 * @param time
 	 *            the amount that the total queuing time is to be increased
 	 */
