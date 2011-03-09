@@ -41,7 +41,9 @@ public class CarWashView extends SimView {
 			eventType = m.group(1);
 		}
 
-		if (i.getLastEvent() instanceof StartEvent) {
+		Event e = i.getLastEvent();
+
+		if (e instanceof StartEvent) {
 			System.out.println("Fast machines: " + i.getNumFastWashes());
 			System.out.println("Slow machines: " + i.getNumSlowWashes());
 			System.out.println("Fast distribution: (" + i.getFastDistributionMin()
@@ -60,22 +62,21 @@ public class CarWashView extends SimView {
 		}
 
 		int carId = -1;
-		Event e = i.getLastEvent();
-		if (i.getLastEvent() instanceof CarWashEvent) {
-			carId = ((CarWashEvent)i.getLastEvent()).getCar().getId();
+		if (e instanceof CarWashEvent) {
+			carId = ((CarWashEvent)e).getCar().getId();
 		}
 
 		System.out.format("%10.2f      %-8s %2s    %2d      %2d       %5.2f"
 				+ "      %5.2f        %2d        %2d\n",
 						e.getTime(), eventType, carId >= 0 ? carId : "",
-						i.getEmptyFast(), i.getEmptySlow(), i.getTotalIdleTime(),
+						i.getEmptyFast(), i.getEmptySlow(), state.getTotalIdleTime(),
 						state.getTotalQueueingTime(), i.getCarsInQueue(),
 						i.getNumRejectedCars());
 
-		if (i.getLastEvent() instanceof StopEvent) {
+		if (e instanceof StopEvent) {
 			System.out.println("----------------------------------------");
 			System.out.format("Total idle machine time: %.2f\n",
-					i.getTotalIdleTime());
+					state.getTotalIdleTime());
 			System.out.format("Total queueing time:     %.2f\n",
 					state.getTotalQueueingTime());
 			System.out.format("Mean queueing time:      %.2f\n",
