@@ -15,6 +15,9 @@ public class StartEvent extends Event {
 		this.time = 0.0;
 	}
 
+	/**
+	 * method uppdating the state of the system according to a Start event
+	 */
 	public void updateState(SimState state, EventQueue eventQueue) {
 		CarWashState s = (CarWashState) state;
 		s.setLastEvent(this);
