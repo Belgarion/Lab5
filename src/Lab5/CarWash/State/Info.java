@@ -26,143 +26,166 @@ public class Info {
 
 	/**
 	 * Method that gets the last event
+	 * 
 	 * @return the last event that occured
 	 */
-	public Event getLastEvent(){
+	public Event getLastEvent() {
 		return lastEvent;
 	}
-	
+
 	/**
 	 * method that gets the number of fast washes
+	 * 
 	 * @return the number of fast washes
 	 */
-	public int getNumFastWashes(){
+	public int getNumFastWashes() {
 		return numFastWashes;
 	}
-	
+
 	/**
-	 * method that returns the number of slow washes 
+	 * method that returns the number of slow washes
+	 * 
 	 * @return the number of slow washes
 	 */
-	public int getNumSlowWashes(){
+	public int getNumSlowWashes() {
 		return numSlowWashes;
 	}
 
 	/**
-	 * Method that returns the fast distributions minimum value used in the random number generator for the car washes 
+	 * Method that returns the fast distributions minimum value used in the
+	 * random number generator for the car washes
+	 * 
 	 * @return minimum value of the fast distribution
 	 */
-	public double getFastDistributionMin(){
+	public double getFastDistributionMin() {
 		return fastDistributionMin;
 	}
 
 	/**
-	 * Method that returns the fast distributions maximum value used in the random number generator for the car washes 
+	 * Method that returns the fast distributions maximum value used in the
+	 * random number generator for the car washes
+	 * 
 	 * @return maximum value of the fast distribution
 	 */
-	public double getFastDistributionMax(){
+	public double getFastDistributionMax() {
 		return fastDistributionMax;
 	}
 
 	/**
-	 * Method that returns the slow distributions minimum value used in the random number generator for the car washes
+	 * Method that returns the slow distributions minimum value used in the
+	 * random number generator for the car washes
+	 * 
 	 * @return minimum value of the slow distribution
 	 */
-	public double getSlowDistributionMin(){
+	public double getSlowDistributionMin() {
 		return slowDistributionMin;
 	}
 
 	/**
-	 * Method that returns the slow distributions maximum value used in the random number generator for the car washes
+	 * Method that returns the slow distributions maximum value used in the
+	 * random number generator for the car washes
+	 * 
 	 * @return maximum value of the slow distribution
 	 */
-	public double getSlowDistributionMax(){
+	public double getSlowDistributionMax() {
 		return slowDistributionMax;
 	}
 
 	/**
-	 * Method returning the lambda used in the exponential random number generator
+	 * Method returning the lambda used in the exponential random number
+	 * generator
+	 * 
 	 * @return lambda
 	 */
-	public double getLambda(){
+	public double getLambda() {
 		return lambda;
 	}
 
 	/**
 	 * Method returning the seed for the random number generators
+	 * 
 	 * @return the seed
 	 */
-	public int getSeed(){
+	public int getSeed() {
 		return seed;
 	}
 
 	/**
 	 * method returning the maximum length of the car queue
+	 * 
 	 * @return the maximum length of the car queue
 	 */
-	public int getMaxQueueSize(){
+	public int getMaxQueueSize() {
 		return maxQueueSize;
 	}
-	
+
 	/**
 	 * method returning the number of empty fast washes
+	 * 
 	 * @return the number of empty fast washes
 	 */
-	public int getEmptyFast(){
+	public int getEmptyFast() {
 		return emptyFast;
 	}
 
 	/**
 	 * Method returning the number of empty slow washes of the state
+	 * 
 	 * @return the number of empty slow washes of the state
 	 */
-	public int getEmptySlow(){
+	public int getEmptySlow() {
 		return emptySlow;
 	}
 
 	/**
 	 * Method returning the number of cars in the queue
+	 * 
 	 * @return the number of cars in the queue
 	 */
-	public int getCarsInQueue(){
+	public int getCarsInQueue() {
 		return carsInQueue;
 	}
 
 	/**
 	 * Method returning the number of rejected cars
+	 * 
 	 * @return the number of rejected cars of the state
 	 */
-	public int getNumRejectedCars(){
+	public int getNumRejectedCars() {
 		return numRejectedCars;
 	}
 
 	/**
 	 * method for setting the current time of the state
-	 * @param time the current time to witch the state is to be updated to
+	 * 
+	 * @param time
+	 *            the current time to witch the state is to be updated to
 	 */
-	public void setCurrentTime(double time){
+	public void setCurrentTime(double time) {
 		currentTime = time;
 	}
 
 	/**
 	 * Method increasing the number of cars that has entered the car wash by one
 	 */
-	public void incNumCarsEntered(){
+	public void incNumCarsEntered() {
 		numCarsEntered++;
 	}
 
 	/**
-	 * Method increasing the number of rejected cars by one 
+	 * Method increasing the number of rejected cars by one
 	 */
-	public void incNumRejectedCars(){
+	public void incNumRejectedCars() {
 		numRejectedCars++;
 	}
 
 	/**
 	 * method increasing the total queuing time
-	 * @param time the amount that the total queuing time is to be increased
+	 * 
+	 * @param time
+	 *            the amount that the total queuing time is to be increased
 	 */
-	public void incTotalQueueingTime(double time){
+	public void incTotalQueueingTime(double time) {
 		totalQueueingTime += time;
 	}
 }
