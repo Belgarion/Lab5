@@ -15,7 +15,7 @@ public class CarWashState extends SimState {
 	private UniformRandomStream fastRandomStream;;
 	private FIFO<Car> queue;
 	private Info info;
-	public CarFactory carFactory;
+	private CarFactory carFactory;
 	private Vector<CarWash> emptyMachines; // contains a list of all empty
 											// machines fast should be placed
 											// first in the vector and slow in
@@ -35,6 +35,10 @@ public class CarWashState extends SimState {
 
 	public Info getInfo() {
 		return info;
+	}
+	
+	public CarFactory getCarFactory(){
+		return carFactory;
 	}
 
 	public void setLastEvent(Event e) {

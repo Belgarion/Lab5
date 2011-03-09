@@ -48,6 +48,6 @@ public class ArriveEvent extends CarWashEvent {
 
 		// if none of the if-statements is fulfilled the car is simply not used
 		eventQueue.insert(new ArriveEvent(s.nextArriveTime(),
-					s.carFactory.createCar()));
+					s.getCarFactory().createCar()));
 	}
 }
