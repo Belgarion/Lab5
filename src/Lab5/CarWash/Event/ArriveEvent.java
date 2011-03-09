@@ -30,18 +30,18 @@ public class ArriveEvent extends CarWashEvent {
 
 		Info info = s.getInfo();
 
-		s.getInfo().currentTime = this.time;
+		s.getInfo().setCurrentTime(this.time);
 
-		if (info.emptyFast > 0 || info.emptySlow > 0) {
+		if (info.getEmptyFast() > 0 || info.getEmptySlow() > 0) {
 			// add car to fastWash or slowWash
 			eventQueue.insert(new LeaveEvent(car, s.addToMachine(car)));
-			info.numCarsEntered++;
-		} else if (info.carsInQueue < info.maxQueueSize) {
+			info.incNumCarsEntered();
+		} else if (info.getCarsInQueue() < info.getMaxQueueSize()) {
 			// add to car queue
-			info.numCarsEntered++;
+			info.incNumCarsEntered();
 			s.addToQueue(car);
 		} else {
-			info.numRejectedCars++;
+			info.incNumRejectedCars();
 		}
 		s.setLastEvent(this);
 		s.doNotify();

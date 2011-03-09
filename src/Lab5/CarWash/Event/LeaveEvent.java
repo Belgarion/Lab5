@@ -28,14 +28,14 @@ public class LeaveEvent extends CarWashEvent {
 	 */
 	public void updateState(SimState state, EventQueue eventQueue) {
 		CarWashState s = (CarWashState) state;
-		s.getInfo().currentTime = this.time;
+		s.getInfo().setCurrentTime(this.time);
 		s.removeFromMachines(this.car);
-		s.setLastEvent(this);
-		s.doNotify();
-		if (s.getInfo().carsInQueue != 0) {
+		if (s.getInfo().getCarsInQueue() != 0) {
 			Car c = s.removeFromQueue();
-			s.getInfo().totalQueueingTime += (this.time - c.getArriveTime());
+			s.getInfo().incTotalQueueingTime(this.time - c.getArriveTime());
 			eventQueue.insert(new LeaveEvent(c, s.addToMachine(c)));
 		}
+		s.setLastEvent(this);
+		s.doNotify();
 	}
 }
