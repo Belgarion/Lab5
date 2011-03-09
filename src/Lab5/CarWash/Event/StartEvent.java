@@ -20,7 +20,7 @@ public class StartEvent extends Event {
 		s.setLastEvent(this);
 		s.getInfo().setCurrentTime(this.time);
 		eventQueue.insert(new ArriveEvent(s.nextArriveTime(),
-					s.carFactory.createCar()));
+					s.getCarFactory().createCar()));
 		s.doNotify();
 	}
 }
