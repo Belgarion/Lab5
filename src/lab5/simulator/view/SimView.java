@@ -10,7 +10,7 @@ import lab5.simulator.state.SimState;
  * @author Andreas Nielsen, Fredrik Lind, Sebastian Larsson
  *
  */
-public class SimView implements Observer {
+public abstract class SimView implements Observer {
 
 	/**
 	 * Constructor for the view of the simstate model
@@ -18,8 +18,5 @@ public class SimView implements Observer {
 	 */
 	public SimView(SimState state) {
 		state.addObserver(this);
-	}
-
-	public void update(Observable o, Object arg) {
 	}
 }
