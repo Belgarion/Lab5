@@ -1,10 +1,10 @@
-package Lab5.CarWash.Event;
+package lab5.carwash.event;
 
-import Lab5.Simulator.Event.Event;
-import Lab5.Simulator.State.SimState;
-import Lab5.Simulator.Event.EventQueue;
+import lab5.simulator.event.Event;
+import lab5.simulator.state.SimState;
+import lab5.simulator.event.EventQueue;
 
-import Lab5.CarWash.State.CarWashState;
+import lab5.carwash.state.CarWashState;
 /**
  * A StartEvent symbolizing when the simulation starts
  * @author Andreas Nielsen, Fredrik Lind, Sebastian Larsson

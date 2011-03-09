@@ -1,8 +1,8 @@
-package Lab5.CarWash.Event;
+package lab5.carwash.event;
 
-import Lab5.CarWash.State.*;
-import Lab5.Simulator.State.SimState;
-import Lab5.Simulator.Event.EventQueue;
+import lab5.carwash.state.*;
+import lab5.simulator.state.SimState;
+import lab5.simulator.event.EventQueue;
 
 /**
  * A LeaveEvent for a CarWash. Symbolizes the leaving of a car from a carwash.

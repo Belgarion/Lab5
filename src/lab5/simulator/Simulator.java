@@ -1,8 +1,8 @@
-package Lab5.Simulator;
+package lab5.simulator;
 
-import Lab5.Simulator.Event.EventQueue;
-import Lab5.Simulator.State.SimState;
-import Lab5.Simulator.Event.Event;
+import lab5.simulator.event.EventQueue;
+import lab5.simulator.state.SimState;
+import lab5.simulator.event.Event;
 /**
  * A class used for simulating a state machine defined by a simstate
  * @author Andreas Nielsen, Fredrik Lind, Sebastian Larsson
@@ -11,7 +11,7 @@ import Lab5.Simulator.Event.Event;
 public class Simulator {
 	private SimState state;
 	private EventQueue eventQueue;
-	
+
 	/**
 	 * Constructs a simulator for simulation of a simstate
 	 * @param state the simstate witch is to be simulated

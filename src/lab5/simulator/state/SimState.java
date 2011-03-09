@@ -1,4 +1,4 @@
-package Lab5.Simulator.State;
+package lab5.simulator.state;
 
 import java.util.Observable;
 /**
@@ -26,7 +26,7 @@ public class SimState extends Observable {
 
 	/**
 	 * Method that checks if the the simulation is running
-	 * @return true if the simulation is running false otherwise 
+	 * @return true if the simulation is running false otherwise
 	 */
 	public boolean isRunning() {
 		return isRunning;

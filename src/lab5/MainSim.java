@@ -1,23 +1,23 @@
-package Lab5;
+package lab5;
 
-import Lab5.Simulator.Event.EventQueue;
-import Lab5.CarWash.State.CarWashState;
-import Lab5.CarWash.View.CarWashView;
-import Lab5.Simulator.Simulator;
-import Lab5.CarWash.Event.StartEvent;
-import Lab5.CarWash.Event.StopEvent;
+import lab5.simulator.event.EventQueue;
+import lab5.carwash.state.CarWashState;
+import lab5.carwash.view.CarWashView;
+import lab5.simulator.Simulator;
+import lab5.carwash.event.StartEvent;
+import lab5.carwash.event.StopEvent;
 
 /**
  * The main class that creates a carwashstate an eventqueue and a simulation
  * object and runs the simulation of the system
- * 
+ *
  * @author Andreas Nielsen, Fredrik Lind, Sebastian Larsson
- * 
+ *
  */
 public class MainSim {
 	/**
 	 * The main method
-	 * 
+	 *
 	 * @param args
 	 *            the arguments used for starting the program should be in the
 	 *            following format: <fast machines> <slow machines> <fast

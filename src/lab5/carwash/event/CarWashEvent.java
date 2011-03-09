@@ -1,7 +1,7 @@
-package Lab5.CarWash.Event;
+package lab5.carwash.event;
 
-import Lab5.Simulator.Event.Event;
-import Lab5.CarWash.State.Car;
+import lab5.simulator.event.Event;
+import lab5.carwash.state.Car;
 
 /**
  * An abstract CarWashEvent symbolizing events that occur at a CarWash

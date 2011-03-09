@@ -1,6 +1,6 @@
-package Lab5.CarWash.State;
+package lab5.carwash.state;
 
-import Lab5.Simulator.Event.Event;
+import lab5.simulator.event.Event;
 
 /**
  * A Car.

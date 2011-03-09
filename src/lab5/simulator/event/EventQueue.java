@@ -1,4 +1,4 @@
-package Lab5.Simulator.Event;
+package lab5.simulator.event;
 
 /**
  * The class symbolizes an event queue containing events for a simulator. Defines the type of the sorted sequence to an Event type. 

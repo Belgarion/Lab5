@@ -1,9 +1,9 @@
-package Lab5.Simulator.View;
+package lab5.simulator.view;
 
 import java.util.Observer;
 import java.util.Observable;
 
-import Lab5.Simulator.State.SimState;
+import lab5.simulator.state.SimState;
 
 /**
  * The class that designs a view of the model of the simstate

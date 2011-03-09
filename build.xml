@@ -23,7 +23,7 @@
 	</target>
 
 	<target name="run" depends="jar">
-		<java classpathref="run-classpath" classname="Lab5.MainSim" fork="true">
+		<java classpathref="run-classpath" classname="lab5.MainSim" fork="true">
 			<arg line="2 2 2.8 4.6 3.5 6.7 2.0 1234 5 15.0" />
 		</java>
 	</target>

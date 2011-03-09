@@ -1,12 +1,12 @@
-package Lab5.CarWash.View;
+package lab5.carwash.view;
 
-import Lab5.Simulator.View.SimView;
-import Lab5.CarWash.State.Info;
-import Lab5.CarWash.State.CarWashState;
-import Lab5.CarWash.Event.StartEvent;
-import Lab5.CarWash.Event.StopEvent;
-import Lab5.CarWash.Event.CarWashEvent;
-import Lab5.Simulator.Event.Event;
+import lab5.simulator.view.SimView;
+import lab5.carwash.state.Info;
+import lab5.carwash.state.CarWashState;
+import lab5.carwash.event.StartEvent;
+import lab5.carwash.event.StopEvent;
+import lab5.carwash.event.CarWashEvent;
+import lab5.simulator.event.Event;
 
 import java.util.Observable;
 import java.util.regex.Pattern;

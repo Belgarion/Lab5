@@ -1,4 +1,4 @@
-package Lab5.CarWash.State;
+package lab5.carwash.state;
 
 import random.UniformRandomStream;
 

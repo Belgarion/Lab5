@@ -1,11 +1,11 @@
-package Lab5.CarWash.State;
+package lab5.carwash.state;
 
 import java.util.Vector;
 
 import random.ExponentialRandomStream;
 import random.UniformRandomStream;
-import Lab5.Simulator.State.SimState;
-import Lab5.Simulator.Event.Event;
+import lab5.simulator.state.SimState;
+import lab5.simulator.event.Event;
 
 public class CarWashState extends SimState {
 	private Vector<CarWash> fastWashes;

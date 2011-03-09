@@ -1,6 +1,6 @@
-package Lab5.Simulator.Event;
+package lab5.simulator.event;
 
-import Lab5.Simulator.State.SimState;
+import lab5.simulator.state.SimState;
 import java.lang.Comparable;
 
 /**
@@ -10,13 +10,13 @@ import java.lang.Comparable;
  */
 public abstract class Event implements Comparable<Event> {
 	protected double time;
-	
+
 	/**
 	 * Constructs an Event
 	 */
 	public Event() {
 	}
-	
+
 	/**
 	 * Constructs an Event with a given time that it should occur
 	 * @param time the time the event will occur
