@@ -36,6 +36,7 @@
 			<fileset dir="src">
 				<include name="*.java" />
 			</fileset>
+			<link href="http://java.sun.com/javase/6/docs/api/" />
 		</javadoc>
 	</target>
 </project>
