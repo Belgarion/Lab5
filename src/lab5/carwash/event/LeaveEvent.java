@@ -35,7 +35,6 @@ public class LeaveEvent extends CarWashEvent {
 			s.getInfo().incTotalQueueingTime(this.time - c.getArriveTime());
 			eventQueue.insert(new LeaveEvent(c, s.addToMachine(c)));
 		}
-		s.setLastEvent(this);
-		s.doNotify();
+		s.doNotify(this);
 	}
 }

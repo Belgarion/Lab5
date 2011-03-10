@@ -20,10 +20,9 @@ public class StartEvent extends Event {
 	 */
 	public void updateState(SimState state, EventQueue eventQueue) {
 		CarWashState s = (CarWashState) state;
-		s.setLastEvent(this);
 		s.getInfo().setCurrentTime(this.time);
 		eventQueue.insert(new ArriveEvent(s.nextArriveTime(),
 					s.getCarFactory().createCar()));
-		s.doNotify();
+		s.doNotify(this);
 	}
 }

@@ -19,19 +19,9 @@ public class Info {
 	double slowDistributionMax;
 	double lambda;
 	int seed;
-	Event lastEvent;
 	int emptyFast;
 	int emptySlow;
 	int carsInQueue;
-
-	/**
-	 * Method that gets the last event
-	 *
-	 * @return the last event that occured
-	 */
-	public Event getLastEvent() {
-		return lastEvent;
-	}
 
 	/**
 	 * method that gets the number of fast washes

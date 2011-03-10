@@ -7,7 +7,7 @@ import lab5.simulator.event.EventQueue;
 import lab5.carwash.state.CarWashState;
 
 /**
- * A class symbolizing the stopping of the carwashstate 
+ * A class symbolizing the stopping of the carwashstate
  * @author Andreas Nielsen Fredrik Lind Sebastian Larsson
  *
  */
@@ -26,8 +26,8 @@ public class StopEvent extends Event {
 	 */
 	public void updateState(SimState state, EventQueue eventQueue) {
 		CarWashState cwState = (CarWashState) state;
-		cwState.setLastEvent(this);
-		cwState.doNotify();
+		cwState.getInfo().setCurrentTime(this.time);
+		cwState.doNotify(this);
 		cwState.stop();
 	}
 }

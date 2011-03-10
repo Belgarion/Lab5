@@ -43,8 +43,7 @@ public class ArriveEvent extends CarWashEvent {
 		} else {
 			info.incNumRejectedCars();
 		}
-		s.setLastEvent(this);
-		s.doNotify();
+		s.doNotify(this);
 
 		// if none of the if-statements is fulfilled the car is simply not used
 		eventQueue.insert(new ArriveEvent(s.nextArriveTime(),

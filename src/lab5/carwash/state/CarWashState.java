@@ -39,13 +39,13 @@ public class CarWashState extends SimState {
 
 	/**
 	 * Returns the info object
-	 * 
+	 *
 	 * @return info the info object
 	 */
 	public Info getInfo() {
 		return info;
 	}
-	
+
 	/**
 	 * Returns the carFactory
 	 * @return carFactory
@@ -55,20 +55,11 @@ public class CarWashState extends SimState {
 	}
 
 	/**
-	 * Sets the current event variable in Info
-	 * @param e The event that is to be set as the last event.
-	 * */
-	public void setLastEvent(Event e) {
-		info.lastEvent = e;
-		info.currentTime = e.getTime();
-	}
-
-	/**
 	 * Combiner function that calls setChanged() and notifyObservers();
 	 * */
-	public void doNotify() {
+	public void doNotify(Event e) {
 		setChanged();
-		notifyObservers();
+		notifyObservers(e);
 	}
 
 	/**

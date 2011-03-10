@@ -32,7 +32,8 @@ public class CarWashView extends SimView {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		print(state.getInfo());
+		Event e = (Event)arg;
+		print(e, state.getInfo());
 	}
 
 	/**
@@ -40,15 +41,13 @@ public class CarWashView extends SimView {
 	 *
 	 * @param i Info
 	 */
-	public void print(Info i) {
-		Matcher m = typePattern.matcher(i.getLastEvent().getClass().getName());
+	public void print(Event e, Info i) {
+		Matcher m = typePattern.matcher(e.getClass().getName());
 		boolean matchFound = m.find();
 		String eventType = "Unknown";
 		if (matchFound) {
 			eventType = m.group(1);
 		}
-
-		Event e = i.getLastEvent();
 
 		if (e instanceof StartEvent) {
 			System.out.println("Fast machines: " + i.getNumFastWashes());
@@ -64,7 +63,7 @@ public class CarWashView extends SimView {
 			System.out.println("----------------------------------------");
 			System.out.println("      Time      Event    Id    Fast    Slow"
 					+ "    IdleTime  QueueTime  QueueSize   Rejected");
-			System.out.format("%10.2f      Start\n", i.getLastEvent().getTime());
+			System.out.format("%10.2f      Start\n", e.getTime());
 			return;
 		}
 
