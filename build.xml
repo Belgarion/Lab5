@@ -1,4 +1,21 @@
 <project>
+	<available file=".git" type="dir" property="git.present"/>
+
+	<target name="git.revision" description="Store git revision in ${repository.version}" if="git.present">
+		<exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
+			<arg value="describe"/>
+			<arg value="--tags"/>
+			<arg value="--always"/>
+			<arg value="HEAD"/>
+		</exec>
+		<condition property="repository.version" value="${git.revision}" else="unknown">
+			<and>
+				<isset property="git.revision"/>
+				<length string="${git.revision}" trim="yes" length="0" when="greater"/>
+			</and>
+		</condition>
+	</target>
+
 	<target name="clean">
 		<delete dir="build" />
 	</target>
@@ -38,5 +55,15 @@
 			</fileset>
 			<link href="http://java.sun.com/javase/6/docs/api/" />
 		</javadoc>
+	</target>
+
+	<target name="package" depends="javadoc,git.revision">
+		<tar destfile="lab5-src-${git.revision}.tar.gz" compression="gzip">
+			<tarfileset dir="src" prefix="src">
+			</tarfileset>
+		</tar>
+		<tar destfile="lab5-docs.tar.gz" compression="gzip">
+			<tarfileset dir="build/docs" prefix="docs/" />
+		</tar>
 	</target>
 </project>
